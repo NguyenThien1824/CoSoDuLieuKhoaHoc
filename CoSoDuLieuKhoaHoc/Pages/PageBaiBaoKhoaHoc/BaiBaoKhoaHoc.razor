@@ -1,0 +1,151 @@
+﻿@page "/BaiBaoKhoaHoc"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Authorization
+@using CoSoDuLieuKhoaHoc.ViewModel
+@using CoSoDuLieuKhoaHoc.Models
+@using CoSoDuLieuKhoaHoc.DataServices
+
+@inject QLKhoaHocContext Dbcontext
+    <div id="titletop" class="top-row px-4" style="background-color:#072565">
+
+        <div class="col-xs-12 col-sm-8 col-md-9">
+
+            <h2 id="ttid" style="text-align:center; margin-top:10px;margin-left:1px;margin-right:1px;color: #005882;font-size: 35px;font-weight:bold;font-family:'Times New Roman'" class="font-weight-800">
+                <a class="title text-white text-sm-center ">
+                    CƠ SỞ DỮ LIỆU KHOA HỌC VÀ CÔNG NGHỆ
+                </a>
+            </h2>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div id="btnlogin">
+                <a href="/Login" class="btnlogin">LOGIN</a>
+            </div>
+            <div>
+                <a id="btninf" <img class="infom" src="images/user.png" alt="Image"></a>
+            </div>
+        </div>
+    </div>
+    <div class="imgbackrounddiv">
+        <br />
+        <br />
+        <br />
+
+        <div class="main">
+            <div class="d-flex justify-content-center mt-2">
+                <div class="nkhbtn">
+                    <RadzenLink Path="/NhaKhoaHoc" Text="NHÀ KHOA HỌC" />
+                </div>
+
+
+                <div class="nkhbtn">
+                    <RadzenLink Path="/DeTaiKhoaHoc" Text="ĐỀ TÀI KHOA HỌC" />
+                </div>
+
+                <div class="nkhbtn">
+                    <RadzenLink Path="/BaiBaoKhoaHoc" Text="BÀI BÁO KHOA HỌC" />
+                </div>
+
+                <div class="nkhbtn">
+                    <RadzenLink Path="/sachvagiaotrinh" Text="SÁCH, GIÁO TRÌNH" />
+                </div>
+            </div>
+            <div class="timkiem">
+
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <div class="=main">
+        <RadzenGrid @ref="ordersGrid" AllowFiltering="true" AllowPaging="true" PageSize="10" AllowSorting="true" EditMode="DataGridEditMode.Single"
+                    Data="@nkhvmd" TItem="BaiBaoKhoaHocViewModel" ColumnWidth="150px">
+            <Columns>
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="MaBaiBao" Title="Mã Bài Báo" />
+                <RadzenGridColumn Width="200px" TItem="BaiBaoKhoaHocViewModel" Property="MaIssn" Title="Mã Issn" />
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="TenBaiBao" Title="Tên Bài Báo" />
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="LaTrongNuoc" Title="La Trong nước" />
+                <RadzenGridColumn Width="160px" TItem="BaiBaoKhoaHocViewModel" Property="CqxuatBan" Title="Tên Cơ Quan Xuất Bản" />
+                <RadzenGridColumn Width="200px" TItem="BaiBaoKhoaHocViewModel" Property="MaLoaiTapChi" Title="Mã Loại Tạp Chí" />
+                <RadzenGridColumn Width="130px" TItem="BaiBaoKhoaHocViewModel" Property="MaCapTapChi" Title="Mã Cấp Tạp Chí" />
+                <RadzenGridColumn Width="130px" TItem="BaiBaoKhoaHocViewModel" Property="NamDangBao" Title="Năm Đăng Báo" />
+                <RadzenGridColumn Width="130px" TItem="BaiBaoKhoaHocViewModel" Property="TapPhatHanh" Title="Tập Phát Hành" />
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="SoPhatHanh" Title="Số Phát Hành" />
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="TrangBaiBao" Title="Trang Bài Báo" />
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="LienKetWeb" Title="Liên Kết Website" />
+                <RadzenGridColumn Width="100px" TItem="BaiBaoKhoaHocViewModel" Property="LinkFileUpLoad" Title="Link" />
+
+                <RadzenGridColumn TItem="BaiBaoKhoaHocViewModel" Context="Dbcontext" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
+                    <Template Context="order">
+                        <RadzenButton Icon="edit" Size="ButtonSize.Small" Click="@(args => EditRow(order))">
+                        </RadzenButton>
+                    </Template>
+                    <EditTemplate Context="order">
+                        <RadzenButton Icon="save" Size="ButtonSize.Small" Click="@((args) => SaveRow(order))">
+                        </RadzenButton>
+                        <RadzenButton Icon="cancel" Size="ButtonSize.Small" ButtonStyle="ButtonStyle.Secondary" Click="@((args) => CancelEdit(order))">
+                        </RadzenButton>
+                    </EditTemplate>
+                </RadzenGridColumn>
+                <RadzenGridColumn TItem="BaiBaoKhoaHocViewModel" Context="order" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
+                    <Template Context="order">
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@(args => DeleteRow(order))">
+                        </RadzenButton>
+                    </Template>
+                    <EditTemplate Context="order">
+                        <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@(args => DeleteRow(order))">
+                        </RadzenButton>
+                    </EditTemplate>
+                </RadzenGridColumn>
+            </Columns>
+        </RadzenGrid>
+    </div>
+    @code {
+        RadzenGrid<BaiBaoKhoaHocViewModel> ordersGrid;
+        IList<BaiBaoKhoaHocViewModel> orders;
+
+        List<BaiBaoKhoaHocViewModel> nkhvmd = new List<BaiBaoKhoaHocViewModel>();
+        DataBaiBaoKhoaHocServices dt = new DataBaiBaoKhoaHocServices();
+        protected override async Task OnInitializedAsync()
+        {
+            nkhvmd = await dt.GetListBaiBaoKhoaHoc();
+
+        }
+        void EditRow(BaiBaoKhoaHocViewModel order)
+        {
+            ordersGrid.EditRow(order);
+        }
+
+        void OnUpdateRow(BaiBaoKhoaHocViewModel order)
+        {
+            Dbcontext.Update<BaiBaoKhoaHocViewModel>(order);
+        }
+
+        void SaveRow(BaiBaoKhoaHocViewModel order)
+        {
+            ordersGrid.UpdateRow(order);
+        }
+
+        void CancelEdit(BaiBaoKhoaHocViewModel order)
+        {
+            ordersGrid.CancelEditRow(order);
+
+            // For production
+            var orderEntry = Dbcontext.Entry(order);
+            orderEntry.CurrentValues.SetValues(orderEntry.OriginalValues);
+            orderEntry.State = EntityState.Unchanged;
+        }
+
+        void DeleteRow(BaiBaoKhoaHocViewModel order)
+        {
+            Dbcontext.Remove<BaiBaoKhoaHocViewModel>(order);
+
+            // For demo purposes only
+            orders.Remove(order);
+
+            // For production
+            //dbContext.SaveChanges();
+
+            ordersGrid.Reload();
+        }
+    }
