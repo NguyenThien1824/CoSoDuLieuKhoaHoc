@@ -6,56 +6,7 @@
 @using CoSoDuLieuKhoaHoc.Models
 @using CoSoDuLieuKhoaHoc.DataServices
 @inject QLKhoaHocContext Dbcontext
-    <div id="titletop" class="top-row px-4" style="background-color:#072565">
 
-        <div class="col-xs-12 col-sm-8 col-md-9">
-
-            <h2 id="ttid" style="text-align:center; margin-top:10px;margin-left:1px;margin-right:1px;color: #005882;font-size: 35px;font-weight:bold;font-family:'Times New Roman'" class="font-weight-800">
-                <a class="title text-white text-sm-center ">
-                    CƠ SỞ DỮ LIỆU KHOA HỌC VÀ CÔNG NGHỆ
-                </a>
-            </h2>
-        </div>
-        <div class="d-flex justify-content-end">
-            <div id="btnlogin">
-                <a href="/Login" class="btnlogin">LOGIN</a>
-            </div>
-            <div>
-                <a id="btninf" <img class="infom" src="images/user.png" alt="Image"></a>
-            </div>
-        </div>
-    </div>
-    <div class="imgbackrounddiv">
-        <br />
-        <br />
-        <br />
-
-        <div class="main">
-            <div class="d-flex justify-content-center mt-2">
-                <div class="nkhbtn">
-                    <RadzenLink Path="/NhaKhoaHoc" Text="NHÀ KHOA HỌC" />
-                </div>
-
-
-                <div class="nkhbtn">
-                    <RadzenLink Path="/DeTaiKhoaHoc" Text="ĐỀ TÀI KHOA HỌC" />
-                </div>
-
-                <div class="nkhbtn">
-                    <RadzenLink Path="/BaiBaoKhoaHoc" Text="BÀI BÁO KHOA HỌC" />
-                </div>
-
-                <div class="nkhbtn">
-                    <RadzenLink Path="/sachvagiaotrinh" Text="SÁCH, GIÁO TRÌNH" />
-                </div>
-            </div>
-            <div class="timkiem">
-
-            </div>
-        </div>
-        <br />
-        <br />
-    </div>
 
     <div class="=main">
         <RadzenGrid Resizable="true" @ref="ordersGrid" AllowFiltering="true" AllowPaging="true" PageSize="10" AllowSorting="true" EditMode="DataGridEditMode.Single"
@@ -64,15 +15,11 @@
                 <RadzenGridColumn Width="100px" TItem="SachVaGiaoTrinhViewModel" Property="MaSach" Title="Mã Sách" />
 
                 <RadzenGridColumn Width="200px" TItem="SachVaGiaoTrinhViewModel" Property="MaIsbn" Title="MaIsbn" />
-                <RadzenGridColumn Width="160px" TItem="SachVaGiaoTrinhViewModel" Property="TenSach" Title="Tên Sách" />
-                <RadzenGridColumn Width="100px" TItem="SachVaGiaoTrinhViewModel" Property="MaLoai" Title="Mã Loại" />
-                <RadzenGridColumn Width="160px" TItem="SachVaGiaoTrinhViewModel" Property="MaLinhVuc" Title="Mã Lĩnh Vực" />
+                <RadzenGridColumn Width="160px" TItem="SachVaGiaoTrinhViewModel" Property="TenSach" Title="Tên Sách" />      
                 <RadzenGridColumn Width="200px" TItem="SachVaGiaoTrinhViewModel" Property="MaNxb" Title="Mã Nhà xuất Bản" />
                 <RadzenGridColumn Width="130px" TItem="SachVaGiaoTrinhViewModel" Property="NamXuatBan" Title="Năm xuất Bản" />
-                <RadzenGridColumn Width="130px" TItem="SachVaGiaoTrinhViewModel" Property="Mota" Title="Mô Tả" />
-                <RadzenGridColumn Width="130px" TItem="SachVaGiaoTrinhViewModel" Property="AnhBia1" Title="Ảnh 1" />
-                <RadzenGridColumn Width="130px" TItem="SachVaGiaoTrinhViewModel" Property="AnhBia4" Title="Ảnh 2" />
-                <RadzenGridColumn Width="100px" TItem="SachVaGiaoTrinhViewModel" Property="AnhBiaIsbn" Title="Ảnh bìa Nhà xuất Bản" />
+                <RadzenGridColumn Width="130px" TItem="SachVaGiaoTrinhViewModel" Property="Mota" Title="Mô Tả" /> 
+               <RadzenGridColumn Width="100px" TItem="SachVaGiaoTrinhViewModel" Property="AnhBiaIsbn" Title="Ảnh bìa Nhà xuất Bản" />
                 <RadzenGridColumn TItem="SachVaGiaoTrinhViewModel" Context="Dbcontext" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
                     <Template Context="order">
                         <RadzenButton Icon="edit" Size="ButtonSize.Small" Click="@(args => EditRow(order))">

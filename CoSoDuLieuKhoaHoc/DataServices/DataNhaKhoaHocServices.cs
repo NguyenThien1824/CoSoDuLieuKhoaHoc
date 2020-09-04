@@ -1,4 +1,11 @@
 ﻿using System;
+
+
+using System.Data;
+
+
+
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +15,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using CoSoDuLieuKhoaHoc.DataServices;
+
 
 
 namespace CoSoDuLieuKhoaHoc.DataServices
@@ -20,84 +29,142 @@ namespace CoSoDuLieuKhoaHoc.DataServices
             List<NhaKhoaHocViewModel> ls = new List<NhaKhoaHocViewModel>();
             foreach (var i in await db.NhaKhoaHoc.ToListAsync())
             {
-                NhaKhoaHocViewModel a = new NhaKhoaHocViewModel() 
-                { 
+                NhaKhoaHocViewModel a = new NhaKhoaHocViewModel()
+                {
                     MaNkh = i.MaNkh,
-                    AnhCaNhan = i.AnhCaNhan, 
+                    AnhCaNhan = i.AnhCaNhan,
                     DiaChiLienHe = i.DiaChiLienHe,
-                    DienThoai = i.DienThoai, 
-                    EmailLienHe = i.EmailLienHe, 
-                    EmailThayThe = i.EmailThayThe, 
-                    GioiTinhNkh = i.GioiTinhNkh, 
-                    HoNkh = i.HoNkh, 
+                    DienThoai = i.DienThoai,
+                    EmailLienHe = i.EmailLienHe,
+                    EmailThayThe = i.EmailThayThe,
+                    GioiTinhNkh = i.GioiTinhNkh,
+                    HoNkh = i.HoNkh,
                     MaCndaoTao = i.MaCndaoTao,
                     MaDonViQl = i.MaDonViQl,
-                    MaHocHam = i.MaHocHam, 
-                    MaHocVi = i.MaHocVi, 
-                    MaNgachVienChuc = i.MaNgachVienChuc, 
-                    MaNkhhoSo = i.MaNkhhoSo, 
-                    NgaySinh = i.NgaySinh, 
-                    NoiSinh = i.NoiSinh, 
-                    SoCmnd = i.SoCmnd, 
-                    TenNkh = i.TenNkh 
+                    MaHocHam = i.MaHocHam,
+                    MaHocVi = i.MaHocVi,
+                    MaNgachVienChuc = i.MaNgachVienChuc,
+                    MaNkhhoSo = i.MaNkhhoSo,
+                    NgaySinh = i.NgaySinh,
+                    NoiSinh = i.NoiSinh,
+                    SoCmnd = i.SoCmnd,
+                    TenNkh = i.TenNkh
                 };
+
+
+
+
                 ls.Add(a);
             }
             return ls;
         }
-      
-        public List<NhaKhoaHocViewModel> NhaKhoaHoc_HocHam()
+        public List<NhaKhoaHocHomeViewModel> lsnkhHome()
         {
-            var model = from a in db.NhaKhoaHoc
-                        join b in db.HocHam
-                        on a.MaHocHam equals b.MaHocHam
-                        where a.MaHocHam == b.MaHocHam
-                        select new NhaKhoaHocViewModel()
-                        {
-                            MaNkh = a.MaNkh,
-                            TenHocHam = b.TenHocHam
-                        };
-                return model.ToList();
-         }
-        public List<NhaKhoaHoc> NhaKhoaHoc_ChuyenMon()
-        {
-            var model = from 
-                        a in db.NhaKhoaHoc
-                        join b in db.ChuyenMonNkh  
-                        on a.MaNkh equals b.MaNkh
-                        join c in db.ChuyenMon
-                        on b.MaChuyenMon equals c.MaChuyenMon
-                        where a.MaNkh == b.MaNkh 
-                        select new NhaKhoaHoc()
-                        {
-                           MaNkh=a.MaNkh,
-                           ChuyenMonNkh=c.ChuyenMonNkh
-                           
-                
-                        };
-            return model.ToList();
 
+            var model = (from a in db.NhaKhoaHoc
+                         join b in db.HocHam
+
+                         on a.MaHocHam equals b.MaHocHam
+                         join c in db.HocVi
+                         on a.MaHocVi equals c.MaHocVi
+                         join d in db.NgachVienChuc
+                         on a.MaNgachVienChuc equals d.MaNgach
+                         join e in db.ChuyenNganh
+                         on a.MaCndaoTao equals e.MaChuyenNganh
+                         join f in db.DonViQl
+                         on a.MaDonViQl equals f.MaDonVi
+                         select new NhaKhoaHocHomeViewModel()
+                         {
+                             Name = a.HoNkh + " " + a.TenNkh,
+                             Hocham = b.TenHocHam,
+                             Hocvi = c.TenHocVi,
+                             Nganhdaotao = d.TenNgach,
+                             Chuyennganh = e.TenChuyenNganh,
+                             Donviquanli = f.TenDonVi,
+                             AnhCaNhan = a.AnhCaNhan != null ? string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(a.AnhCaNhan)) : String.Empty
+                         });
+            return model.ToList();
         }
-        public List<NhaKhoaHoc> NhaKhoaHoc_HocVi()
+        public int SLuongNKH()
         {
-            var model = from a in db.HocVi
-                        join b in db.NhaKhoaHoc
-                        on a.MaHocVi equals b.MaHocVi
-                        where a.MaHocVi == b.MaHocVi
-                        select new NhaKhoaHoc()
-                        {
-                            MaHocVi = a.MaHocVi,
+            NhaKhoaHoc nkh = new NhaKhoaHoc();
+            var purch = from a in db.NhaKhoaHoc
+                        select a;
+            return purch.Count();
 
-
-                        };
-            return model.ToList();
         }
 
     }
 }
+
+
 /*
- Kim Hoàng Lộc
+
+
+
+
+
+
+public List<NhaKhoaHocViewModel> NhaKhoaHoc_HocHam()
+{
+    var model = from a in db.NhaKhoaHoc
+                join b in db.HocHam
+                on a.MaHocHam equals b.MaHocHam
+                where a.MaHocHam == b.MaHocHam
+                select new NhaKhoaHocViewModel()
+                {
+                    MaNkh = a.MaNkh,
+                    TenHocHam = b.TenHocHam
+                };
+        return model.ToList();
+ }
+public List<NhaKhoaHoc> NhaKhoaHoc_ChuyenMon()
+{
+    var model = from 
+                a in db.NhaKhoaHoc
+                join b in db.ChuyenMonNkh  
+                on a.MaNkh equals b.MaNkh
+                join c in db.ChuyenMon
+                on b.MaChuyenMon equals c.MaChuyenMon
+                where a.MaNkh == b.MaNkh 
+                select new NhaKhoaHoc()
+                {
+                   MaNkh=a.MaNkh,
+                   ChuyenMonNkh=c.ChuyenMonNkh
+
+
+                };
+    return model.ToList();
+
+}
+public List<NhaKhoaHoc> NhaKhoaHoc_HocVi()
+{
+    var model = from a in db.HocVi
+                join b in db.NhaKhoaHoc
+                on a.MaHocVi equals b.MaHocVi
+                where a.MaHocVi == b.MaHocVi
+                select new NhaKhoaHoc()
+                {
+                    MaHocVi = a.MaHocVi,
+
+
+                };
+    return model.ToList();
+}
+
+}
+}
+/*
+Kim Hoàng Lộc
+
+
+Giáo sư - Thạc sĩ học hàm học vị
+
 Giáo sư - Thạc sĩ
+
+
+Giáo sư - Thạc sĩ
+
 Ngành đào tạo:
 Giảng viên chính
 
@@ -108,6 +175,13 @@ Kiểm thử
 Khoa Công nghệ Thông tin
 
 */
+
+
+
+
+
+
+
 
 
 /*

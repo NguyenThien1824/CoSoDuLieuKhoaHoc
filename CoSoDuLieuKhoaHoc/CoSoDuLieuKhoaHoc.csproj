@@ -8,6 +8,7 @@
     <PackageReference Include="BlazorStyled" Version="3.0.0" />
     <PackageReference Include="bootstrap" Version="4.5.2" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="LinqKit" Version="1.1.17" />
     <PackageReference Include="MatBlazor" Version="2.6.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
@@ -22,6 +23,8 @@
     </PackageReference>
     <PackageReference Include="Radzen.Blazor" Version="2.11.9" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
 
 </Project>

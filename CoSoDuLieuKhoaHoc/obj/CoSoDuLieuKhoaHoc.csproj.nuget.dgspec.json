@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {}
+    "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {
+    "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+        "projectUniqueName": "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
         "projectName": "CoSoDuLieuKhoaHoc",
-        "projectPath": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
-        "packagesPath": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\obj\\",
+        "projectPath": "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+        "packagesPath": "C:\\Users\\Thien\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thien\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -48,6 +45,10 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
+            },
+            "LinqKit": {
+              "target": "Package",
+              "version": "[1.1.17, )"
             },
             "MatBlazor": {
               "target": "Package",
@@ -95,6 +96,14 @@
               "target": "Package",
               "version": "[4.8.2, )"
             },
+            "System.Linq": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
+            "System.Linq.Queryable": {
+              "target": "Package",
+              "version": "[4.3.0, )"
+            },
             "bootstrap": {
               "target": "Package",
               "version": "[4.5.2, )"
@@ -118,7 +127,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

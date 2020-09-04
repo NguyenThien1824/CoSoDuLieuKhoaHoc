@@ -149,6 +149,18 @@
       "jQuery/3.0.0": {
         "type": "package"
       },
+      "LinqKit/1.1.17": {
+        "type": "package",
+        "dependencies": {
+          "EntityFramework": "6.3.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/LinqKit.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/LinqKit.dll": {}
+        }
+      },
       "MatBlazor/2.6.2": {
         "type": "package",
         "dependencies": {
@@ -1702,6 +1714,25 @@
           "lib/netstandard1.6/System.Linq.Expressions.dll": {}
         }
       },
+      "System.Linq.Queryable/4.3.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Linq": "4.3.0",
+          "System.Linq.Expressions": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Extensions": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "compile": {
+          "ref/netstandard1.0/System.Linq.Queryable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Linq.Queryable.dll": {}
+        }
+      },
       "System.Memory/4.5.3": {
         "type": "package",
         "compile": {
@@ -2542,6 +2573,21 @@
         "Tools/uninstall.ps1",
         "jquery.3.0.0.nupkg.sha512",
         "jquery.nuspec"
+      ]
+    },
+    "LinqKit/1.1.17": {
+      "sha512": "vHgi8GRhRSEedbF3exnN3+3tXKU520xm3PceJStca+yezw/DbfQCjJVBghXMwco0Z4HE0I/qBJPYExlybpclQA==",
+      "type": "package",
+      "path": "linqkit/1.1.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/LinqKit.dll",
+        "lib/net45/LinqKit.xml",
+        "lib/netstandard2.1/LinqKit.dll",
+        "lib/netstandard2.1/LinqKit.xml",
+        "linqkit.1.1.17.nupkg.sha512",
+        "linqkit.nuspec"
       ]
     },
     "MatBlazor/2.6.2": {
@@ -5607,6 +5653,65 @@
         "system.linq.expressions.nuspec"
       ]
     },
+    "System.Linq.Queryable/4.3.0": {
+      "sha512": "In1Bmmvl/j52yPu3xgakQSI0YIckPUr870w4K5+Lak3JCCa8hl+my65lABOuKfYs4ugmZy25ScFerC4nz8+b6g==",
+      "type": "package",
+      "path": "system.linq.queryable/4.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/monoandroid10/_._",
+        "lib/monotouch10/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.Linq.Queryable.dll",
+        "lib/netstandard1.3/System.Linq.Queryable.dll",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/monoandroid10/_._",
+        "ref/monotouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/System.Linq.Queryable.dll",
+        "ref/netcore50/System.Linq.Queryable.xml",
+        "ref/netcore50/de/System.Linq.Queryable.xml",
+        "ref/netcore50/es/System.Linq.Queryable.xml",
+        "ref/netcore50/fr/System.Linq.Queryable.xml",
+        "ref/netcore50/it/System.Linq.Queryable.xml",
+        "ref/netcore50/ja/System.Linq.Queryable.xml",
+        "ref/netcore50/ko/System.Linq.Queryable.xml",
+        "ref/netcore50/ru/System.Linq.Queryable.xml",
+        "ref/netcore50/zh-hans/System.Linq.Queryable.xml",
+        "ref/netcore50/zh-hant/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/System.Linq.Queryable.dll",
+        "ref/netstandard1.0/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/de/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/es/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/fr/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/it/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/ja/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/ko/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/ru/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/zh-hans/System.Linq.Queryable.xml",
+        "ref/netstandard1.0/zh-hant/System.Linq.Queryable.xml",
+        "ref/portable-net45+win8+wp8+wpa81/_._",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "system.linq.queryable.4.3.0.nupkg.sha512",
+        "system.linq.queryable.nuspec"
+      ]
+    },
     "System.Memory/4.5.3": {
       "sha512": "3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
       "type": "package",
@@ -7920,6 +8025,7 @@
     ".NETCoreApp,Version=v3.1": [
       "BlazorStyled >= 3.0.0",
       "EntityFramework >= 6.4.4",
+      "LinqKit >= 1.1.17",
       "MatBlazor >= 2.6.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.7",
       "Microsoft.AspNetCore.Mvc.Core >= 2.2.5",
@@ -7931,27 +8037,25 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.7",
       "Radzen.Blazor >= 2.11.9",
       "System.Data.SqlClient >= 4.8.2",
+      "System.Linq >= 4.3.0",
+      "System.Linq.Queryable >= 4.3.0",
       "bootstrap >= 4.5.2"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Thien\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+      "projectUniqueName": "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
       "projectName": "CoSoDuLieuKhoaHoc",
-      "projectPath": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
-      "packagesPath": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\Desktop\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\obj\\",
+      "projectPath": "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+      "packagesPath": "C:\\Users\\Thien\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Thien\\Desktop\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Administrator.DESKTOP-MOMBPDQ\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Thien\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7982,6 +8086,10 @@
           "EntityFramework": {
             "target": "Package",
             "version": "[6.4.4, )"
+          },
+          "LinqKit": {
+            "target": "Package",
+            "version": "[1.1.17, )"
           },
           "MatBlazor": {
             "target": "Package",
@@ -8029,6 +8137,14 @@
             "target": "Package",
             "version": "[4.8.2, )"
           },
+          "System.Linq": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
+          "System.Linq.Queryable": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
           "bootstrap": {
             "target": "Package",
             "version": "[4.5.2, )"
@@ -8052,7 +8168,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

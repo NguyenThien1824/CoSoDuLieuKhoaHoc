@@ -1,172 +1,218 @@
-﻿<h3>NhaKhoaHoc</h3>
+﻿
 @page "/NhaKhoaHoc"
+
 @using Microsoft.AspNetCore.Authorization
 @using CoSoDuLieuKhoaHoc.ViewModel
 @using Microsoft.EntityFrameworkCore;
 @using CoSoDuLieuKhoaHoc.Models
 
+
 @using CoSoDuLieuKhoaHoc.DataServices
 @inject QLKhoaHocContext Dbcontext
 
-<div id="titletop" class="top-row px-4" style="background-color:#072565">
+<RadzenImage Path="https://www.w3schools.com/howto/img_avatar2.png" Style="width:100px">
+</RadzenImage>
+<body>
+    <RadzenImage Path="https://www.w3schools.com/howto/img_avatar2.png" Style="width:100px">
+    </RadzenImage>
+    <section>
+        <div class="container">
+            <div class="section-content">
+                <section id="team">
+                    <div class="container pt-40">
 
-    <div class="col-xs-12 col-sm-8 col-md-9">
+                        <div class="section-title mb-10">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="text-uppercase text-theme-colored title line-bottom">
 
-        <h2 id="ttid" style="text-align:center; margin-top:10px;margin-left:1px;margin-right:1px;color: #005882;font-size: 35px;font-weight:bold;font-family:'Times New Roman'" class="font-weight-800">
-            <a class="title text-white text-sm-center ">
-                CƠ SỞ DỮ LIỆU KHOA HỌC VÀ CÔNG NGHỆ
-            </a>
-        </h2>
-    </div>
-    <div class="d-flex justify-content-end">
-        <div id="btnlogin">
-            <a href="/Login" class="btnlogin">LOGIN</a>
+                                        <br />   <br />
+
+
+                                        <span class="text-uppercase pull-right text-theme-colored title ">
+                                            <div class="coasad" Style="font-family:'Poor Richard';font-size:40px;font-display:initial"> <u> <i> <b class="">  <h>Danh Sách Nhà Khoa Học :@soluongnhakhoahoc</h></b></i></u></div>
+                                        </span>
+
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mtli-row-clearfix">
+                            @foreach (var item in lsNKHHome)
+                            {
+                                <div class="col-xs-12 col-sm-6 col-md-4 sm-text-center mb-30 mb-sm-30">
+
+                                    <div class="team maxwidth600">
+                                        <style>
+                                            .flip-card {
+                                                background-color: transparent;
+                                                perspective: 1000px;
+                                            }
+
+                                            .flip-card-inner {
+                                                position: relative;
+                                                width: 100%;
+                                                height: 100%;
+                                                text-align: center;
+                                                transition: transform 0.6s;
+                                                transform-style: preserve-3d;
+                                                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+                                            }
+
+                                            .flip-card:hover .flip-card-inner {
+                                                transform: rotateY(180deg);
+                                            }
+
+                                            .flip-card-front, .flip-card-back {
+                                                position: absolute;
+                                                width: 100%;
+                                                height: 100%;
+                                                backface-visibility: hidden;
+                                            }
+
+                                            .flip-card-front {
+                                                background-color: aliceblue;
+                                                color: green;
+                                            }
+
+                                            .flip-card-back {
+                                                transform: rotateY(180deg);
+                                                background-color: aliceblue;
+                                                color: green;
+                                            }
+                                        </style>
+                                        <div class="content flip-card" style="height:350px">
+                                            <div class="flip-card-inner">
+                                                <div class="flip-card-front">
+                                                    @{ if (String.IsNullOrWhiteSpace(item.AnhCaNhan))
+                                                        {<img style="max-height: 280px; width: 100%" src="~/Image/avatar.bmp" /> }
+                                                        else
+                                                        {<img style="max-height: 280px" class="img-fullwidth" src="@item.AnhCaNhan" />}
+                                                    }
+                                                    <h4 class="name text-theme-color-2 mt-0" style="padding: 15px 0 !important">
+                                                        @item.Name<br>
+                                                        <small>
+
+                                                            @item.Hocham
+                                                            <span>-</span>
+
+                                                            @item.Hocvi
+                                                        </small>
+                                                    </h4>
+
+                                                </div>
+
+
+                                                <div class="flip-card-back">
+                                                    <h4 class="name text-theme-color-2 mt-0" style="padding: 15px 0 !important">
+                                                        @item.Name
+                                                        <small>
+
+                                                            @item.Hocham
+
+
+                                                            <span>-</span>
+
+
+                                                            @item.Hocvi
+                                                        </small>
+                                                    </h4>
+                                                    <p class="mb-0">
+                                                        <b>Ngành đào tạo:</b> <br>
+                                                        @item.Nganhdaotao
+                                                    </p>
+                                                    <p class="mb-10">
+                                                        <b>Chuyên ngành đào tạo:</b> <br>
+                                                        @item.Chuyennganh
+                                                    </p>
+                                                    <p class="mb-10">
+                                                        <b>Đơn vị quản lý:</b> <br>
+                                                        @item.Donviquanli
+                                                    </p>
+                                                    <a class="btn btn-theme-colored btn-sm flip" style="margin: 5px auto !important" href="NhaKhoaHoc">
+                                                        Xem chi tiết
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br />
+                            }
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-        <div>
-            <a id="btninf" <img class="infom" src="images/user.png" alt="Image"></a>
-        </div>
-    </div>
-</div>
-<div class="imgbackrounddiv">
-    <br />
-    <br />
-    <br />
+    </section>
 
-    <div class="main">
-        <div class="d-flex justify-content-center mt-2">
-            <div class="nkhbtn">
-                <RadzenLink Path="/NhaKhoaHoc" Text="NHÀ KHOA HỌC" />
+
+
+
+
+    @foreach (var i in lsNKHHome)
+    {
+        <div class="row mtli-row-clearfix">
+
+            <div class="col-xs-12 col-sm-6 col-md-4 sm-text-center mb-30 mb-sm-30">
+
+                <div class="team maxwidth600">
+
+                    <div class="content flip-card" style="height:350px">
+
+                        <div class="flip-card-back">
+                            <h4 class="name text-theme-color-2 mt-0" style="padding: 15px 0 !important">
+                                @i.Name<br>
+                                <small>
+
+                                    @i.Hocham
+
+
+                                    <span>-</span>
+                                    @i.Hocvi
+                                </small>
+                            </h4>
+                            <p class="mb-0">
+                                <b>Ngành đào tạo:</b> <br>
+                                @i.Nganhdaotao
+                            </p>
+                            <p class="mb-10">
+                                <b>Chuyên ngành đào tạo:</b> <br>
+                                @i.Chuyennganh
+                            </p>
+                            <p class="mb-10">
+                                <b>Đơn vị quản lý:</b> <br>
+                                @i.Donviquanli
+                            </p>
+                            <a class="btn btn-theme-colored btn-sm flip" style="margin: 5px auto !important" )">
+                                Xem chi tiết
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
             </div>
 
-
-            <div class="nkhbtn">
-                <RadzenLink Path="/DeTaiKhoaHoc" Text="ĐỀ TÀI KHOA HỌC" />
-            </div>
-
-            <div class="nkhbtn">
-                <RadzenLink Path="/BaiBaoKhoaHoc" Text="BÀI BÁO KHOA HỌC" />
-            </div>
-
-            <div class="nkhbtn">
-                <RadzenLink Path="/sachvagiaotrinh" Text="SÁCH, GIÁO TRÌNH" />
-            </div>
         </div>
-        <div class="timkiem">
-
-        </div>
-    </div>
-    <br />
-    <br />
-</div>
-
-
-<div class="=main">
-    <RadzenGrid @ref="ordersGrid" AllowFiltering="true"  AllowPaging="true" PageSize="10" AllowSorting="true" EditMode="DataGridEditMode.Single"
-                Data="@nkhvmd" TItem="NhaKhoaHocViewModel" ColumnWidth="150px">
-        <Columns>
-
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="MaNkh" Title="Mã Nhà Khoa Học" />
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="TenHocHam" Title="Tên Học Hàm" />
-
-            <RadzenGridColumn Width="200px" TItem="NhaKhoaHocViewModel" Property="HoNkh" Title="Họ" />
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="TenNkh" Title="Tên" />
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="GioiTinhNkh" Title="Giới Tính" />
-            <RadzenGridColumn Width="160px" TItem="NhaKhoaHocViewModel" Property="NgaySinh" Title="Ngày Sinh" />
-            <RadzenGridColumn Width="200px" TItem="NhaKhoaHocViewModel" Property="DiaChiLienHe" Title="Địa Chỉ" />
-            <RadzenGridColumn Width="130px" TItem="NhaKhoaHocViewModel" Property="DienThoai" Title="Điện Thoại" />
-            <RadzenGridColumn Width="130px" TItem="NhaKhoaHocViewModel" Property="EmailLienHe" Title="Email Liên Hệ" />
-            <RadzenGridColumn Width="130px" TItem="NhaKhoaHocViewModel" Property="EmailThayThe" Title="Email Thay Thế" />
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="MaHocHam" Title="Mã Học Hàm" />
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="NhaKhoaHoc.MaHocVi" Title="Mã Học Vị">
-                <EditTemplate Context="order">
-                    <RadzenDropDown @bind-Value="order.MaNkh" Data="@nkhvmd" TextProperty="MaHocVi" ValueProperty="MaNkh" Style="width:100%" />
-                </EditTemplate>
-            </RadzenGridColumn>
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="NhakhoaHocViewModel.MaCndaoTao" Title="Mã CN Đào Tạo">
-                <EditTemplate Context="order">
-                    <RadzenDropDown @bind-Value="order.MaNkh" Data="@nkhvmd" TextProperty="MaCndaoTao" ValueProperty="MaNkh" Style="width:100%" />
-                </EditTemplate>
-            </RadzenGridColumn>
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="MaDonViQl" Title="MÃ Đơn Vị" />
-
-
-            <RadzenGridColumn Width="100px" TItem="NhaKhoaHocViewModel" Property="MaNgachVienChuc" Title="Mã Viên Chức" />
-            <RadzenGridColumn Width="100" TItem="NhaKhoaHocViewModel" Property="SoCmnd" Title="Số Chứng Minh" />
-            <RadzenGridColumn Width="130px" TItem="NhaKhoaHocViewModel" Property="NoiSinh" Title="Nơi Sinh" />
-
-            <RadzenGridColumn TItem="NhaKhoaHocViewModel" Context="Dbcontext" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="100px">
-                <Template Context="order">
-                    <RadzenButton Icon="edit" Size="ButtonSize.Small" Click="@(args => EditRow(order))">
-                    </RadzenButton>
-                </Template>
-                <EditTemplate Context="order">
-                    <RadzenButton Icon="save" Size="ButtonSize.Small" Click="@((args) => SaveRow(order))">
-                    </RadzenButton>
-                    <RadzenButton Icon="cancel" Size="ButtonSize.Small" ButtonStyle="ButtonStyle.Secondary" Click="@((args) => CancelEdit(order))">
-                    </RadzenButton>
-                </EditTemplate>
-            </RadzenGridColumn>
-            <RadzenGridColumn TItem="NhaKhoaHocViewModel" Context="order" Bubble="false" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="70px">
-                <Template Context="order">
-                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@(args => DeleteRow(order))">
-                    </RadzenButton>
-                </Template>
-                <EditTemplate Context="order">
-                    <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="close" Size="ButtonSize.Small" Click="@(args => DeleteRow(order))">
-                    </RadzenButton>
-                </EditTemplate>
-            </RadzenGridColumn>
-        </Columns>
-    </RadzenGrid>
-
-</div>
+    }
+</body>
 @code {
-    RadzenGrid<NhaKhoaHocViewModel> ordersGrid;
-    IList<NhaKhoaHocViewModel> orders;
-    IEnumerable<CoSoDuLieuKhoaHoc.MyInterface.INhaKhoaHocManager> GetListNhaKhoaHoc;
-    List<NhaKhoaHocViewModel> nkhvmd = new List<NhaKhoaHocViewModel>();
-    DataNhaKhoaHocServices dt = new DataNhaKhoaHocServices();
+
+    DataNhaKhoaHocServices dtnkh = new DataNhaKhoaHocServices();
+    List<NhaKhoaHocHomeViewModel> lsNKHHome = new List<NhaKhoaHocHomeViewModel>();
+    int soluongnhakhoahoc = 0;
+
     protected override async Task OnInitializedAsync()
     {
-        nkhvmd = await dt.GetListNhaKhoaHoc();
-
-
-    }
-    void EditRow(NhaKhoaHocViewModel order)
-    {
-        ordersGrid.EditRow(order);
+        lsNKHHome = dtnkh.lsnkhHome();
+        soluongnhakhoahoc = dtnkh.SLuongNKH();
     }
 
-    void OnUpdateRow(NhaKhoaHocViewModel order)
-    {
-        Dbcontext.Update<NhaKhoaHocViewModel>(order);
-    }
 
-    void SaveRow(NhaKhoaHocViewModel order)
-    {
-        ordersGrid.UpdateRow(order);
-    }
-
-    void CancelEdit(NhaKhoaHocViewModel order)
-    {
-        ordersGrid.CancelEditRow(order);
-
-        // For production
-        var orderEntry = Dbcontext.Entry(order);
-        orderEntry.CurrentValues.SetValues(orderEntry.OriginalValues);
-        orderEntry.State = EntityState.Unchanged;
-    }
-
-    void DeleteRow(NhaKhoaHocViewModel order)
-    {
-        Dbcontext.Remove<NhaKhoaHocViewModel>(order);
-
-        // For demo purposes only
-        orders.Remove(order);
-
-        // For production
-        //dbContext.SaveChanges();
-
-        ordersGrid.Reload();
-    }
 }
