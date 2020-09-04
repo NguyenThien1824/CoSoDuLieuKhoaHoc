@@ -1,112 +1,57 @@
-﻿
-@page "/Nhakhoahoc"
-@using Microsoft.AspNetCore.Authorization
-@using CoSoDuLieuKhoaHoc.ViewModel
-@using Microsoft.EntityFrameworkCore;
-@using CoSoDuLieuKhoaHoc.Models
-@using Radzen.Blazor;
-@using Radzen
-
-@using CoSoDuLieuKhoaHoc.DataServices
-@inject QLKhoaHocContext Dbcontext
-<br />
-<div>
-    <RadzenFieldset Text="Tìm Kiếm Thông tin nhà khoa học">
-        <div class="row">
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn đơn vị" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
+﻿@page "/Viewnkh"
+@using Radzen.Blazor
+@using Microsoft.EntityFrameworkCore
+<body style="background-color:lightgray">
+    <div>
+        <div class="row" style="background-color:aqua ">
+            <!-- div thông tin-->
+            <div>
+                <!--div hình ảnh mã số-->
+                <img id="imglogo" src="/images/avt.png" alt="Image " style="width:360px; height:452px;margin-left:5px;margin-top:10px">
+                <RadzenLabel Text="123213312213"> </RadzenLabel>
             </div>
+            <div style="float: right; margin: 20px;">
+                <!--số lượng-thông tin -chuyên môn-->
+                <!--div group-->
+                <div class="mat-elevation-z0" Style="float:left ;margin: 10px">
 
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardNr" AllowClear="true" Placeholder="Chọn ngạch" Data="@card1" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-            </div>
-
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn chức danh" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-
-            </div>
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn học vị" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-
-            </div>
-
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn lĩnh vực nghiên cứu" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-            </div>
-            <div class="col-md-3">
-                <div class="col-md-8 align-items-center d-flex">
-                    <RadzenLabel Text="Nhập từ khóa" />
+                    <RadzenLabel Text="Bài báo: 445
+                                 " ></RadzenLabel>
                 </div>
-                <div class="col-md-8">
-                    <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                <div Style="float:left;margin: 10px">
+
+                    <RadzenLabel Text="Sách Giáo trình:165
+                                 "></RadzenLabel>
                 </div>
+                <div Style="float:left; margin: 10px ">
+
+                    <RadzenLabel Text="Đề tài khoa học:457
+                                 "></RadzenLabel>
+                </div>
+
             </div>
-            <RadzenButton Text="Tìm Kiếm" Style="margin-bottom: 20px; width: 150px; margin-right:3px;" />
         </div>
 
-    </RadzenFieldset>
-</div>
-<br />
+    </div>
+    <div>
+        <!--div quá trình-->
+        <div>
+            <!--đơn vị-->
+        </div>
+        <div>
+            <!--công tác-->
+        </div>
+        <div>
+            <!--đào tạo-->
+        </div>
 
-<RadzenTabs>
-    <Tabs>
-        <RadzenTabsItem Text="DANH SÁCH NHÀ KHOA HỌC" Style="border-color:green; border-width:3px">
-            <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@tests" TItem="Test">
+    </div>
 
-                <Template Context="order">
-                    <RadzenCard Style="width:340px; height:370px;border-width:3px;border-color:green">
-                        <div class="row" style="background-color:lightgray;width:339px; height:369px;">
-                            <div class="col-md-6">
-                                <div>Tên nhà khoa học:</div>
-                                <b>@order.sthamso2</b>
-                                <div style="margin-top:20px">Học vị- Học hàm:</div>
-
-                                <b>@order.sthamso1 - @order.sthamso3</b>
-                                <br />
-                                <img id="imglogo" src="@order.img" alt="Image " style="width:150px; height:150px;margin-bottom:1px">
-
-
-                            </div>
-                            <div class="col-md-6">
-                                <div style="margin-top:20px">Ngành đào tạo:</div>
-                                <b>@(order.sthamso6)</b>
-                                <div style="margin-top:20px">Chuyên ngành đào tạo:</div>
-                                <b>@(order.sthamso5)</b>
-                                <div style="margin-top:20px">Đơn vị quản lí:</div>
-                                <b>@(order.dtthamso1)</b>
-                                <div style="background-color:lavender; color:red; font-size:large">Mã số nhà khoa học: @order.ithamso2</div>
-                            </div>
-                            <div>
-                                <RadzenButton Text="Xem Chi Tiết" Style="margin-left:14px" />
-                            </div>
-                        </div>
-                    </RadzenCard>
-                </Template>
-            </RadzenDataList>
-        </RadzenTabsItem>
-    </Tabs>
-</RadzenTabs>
+</body>
 
 @code {
 
-
-    List<NhaKhoaHocHomeViewModel> orders;
-    List<NhaKhoaHocHomeViewModel> nkhvmd = new List<NhaKhoaHocHomeViewModel>();
-    DataNhaKhoaHocServices dt = new DataNhaKhoaHocServices();
-    protected override async Task OnInitializedAsync()
-    {
-        nkhvmd = dt.lsnkhHome();
-
-    }
-
     // thêm các data mẫu
-
-
 
     public class Order
     {
@@ -231,6 +176,21 @@
           new Test() { id = 11, ithamso1 =100 ,ithamso2=264 ,sthamso1="fwegr" ,sthamso2="Nguyễn Văn ưe" ,sthamso3="ffe app unlry." ,
              sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
 
+    };
+    public Test t = new Test()
+    {
+        id = 1,
+        ithamso1 = 12,
+        ithamso2 = 232,
+        sthamso1 = "dfwa",
+        sthamso2 = "Nguyễn Văn A",
+        sthamso3 = "You are our laptop .",
+        sthamso4 = "THIS IS THE PAGE",
+        sthamso5 = "trang chiếu",
+        sthamso6 = "aaaa",
+        fthamso2 = 55,
+        dtthamso1 = DateTime.Parse("10/10/2022"),
+        img = "images/avt.png"
     };
 
 }

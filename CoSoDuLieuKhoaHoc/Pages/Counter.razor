@@ -9,167 +9,229 @@
 
 @using CoSoDuLieuKhoaHoc.DataServices
 @inject QLKhoaHocContext Dbcontext
-<br />
-<div>
-    <RadzenFieldset Text="Tìm Kiếm Thông tin nhà khoa học">
-        <div class="row">
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn đơn vị" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-            </div>
 
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn ngạch" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-            </div>
-
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn chức danh" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-
-            </div>
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn học vị" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-
-            </div>
-           
-            <div class="col-md-3">
-                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn lĩnh vực nghiên cứu" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
-                </RadzenDropDown>
-            </div>
-            <div class="col-md-3">
-                <div class="col-md-8 align-items-center d-flex">
-                    <RadzenLabel Text="Nhập từ khóa" />
+<body style ="background-color:ghostwhite">
+    <div>
+        <RadzenFieldset Text="Tìm Kiếm Thông tin nhà khoa học">
+            <div class="row">
+                <div class="col-md-3">
+                    <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn đơn vị" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                    </RadzenDropDown>
                 </div>
-                <div class="col-md-8">
-                    <RadzenTextBox style="width: 100%;" Name="CardNr" />
+
+                <div class="col-md-3">
+                    <RadzenDropDown @bind-Value="order.CardNr" AllowClear="true" Placeholder="Chọn ngạch" Data="@card1" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                    </RadzenDropDown>
                 </div>
+
+                <div class="col-md-3">
+                    <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn chức danh" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                    </RadzenDropDown>
+
+                </div>
+                <div class="col-md-3">
+                    <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn học vị" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                    </RadzenDropDown>
+
+                </div>
+
+                <div class="col-md-3">
+                    <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn lĩnh vực nghiên cứu" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                    </RadzenDropDown>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-8 align-items-center d-flex">
+                        <RadzenLabel Text="Nhập từ khóa" />
+                    </div>
+                    <div class="col-md-8">
+                        <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                    </div>
+                </div>
+                <RadzenButton Text="Tìm Kiếm" Style="margin-bottom: 20px; width: 150px; margin-right:3px;" />
             </div>
-            <RadzenButton Text="Tìm Kiếm" Style="margin-bottom: 20px; width: 150px; margin-right:3px;" />
-        </div>
 
-    </RadzenFieldset>
-</div>
-<br />
-<RadzenTabs>
-    <Tabs>
-        <RadzenTabsItem Text="DANH SÁCH NHÀ KHOA HỌC">
-            <RadzenDataList PageSize="2" WrapItems="true" AllowPaging="true" Data="@nkhvmd" TItem="NhaKhoaHocHomeViewModel">
-                <Template Context="order">
-                    <RadzenCard Style="width:340px; height:330px">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div>Tên nhà khoa học:</div>
-                                <b>@order.Name</b>
-                                <div style="margin-top:20px">Học vị- Học hàm:</div>
+        </RadzenFieldset>
+    </div>
+    <br />
 
-                                <b>@order.Hocham - @order.Hocvi</b>
-                                <br />
-                                <img id="imglogo" src="images/avt.png" alt="Image " style="width:150px; height:150px">
-                                <br />
-                                <div style="background-color:lavender; color:red; font-size:large">Mã số nhà khoa học: 1128562832</div>
+    <RadzenTabs>
+        <Tabs>
+            <RadzenTabsItem Text="DANH SÁCH NHÀ KHOA HỌC" Style="border-color:green; border-width:3px">
+                <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@tests" TItem="Test">
 
+                    <Template Context="order">
+                        <RadzenCard Style="width:340px; height:370px;border-width:3px;border-color:green">
+                            <div class="row" style="background-color:lightgray;width:339px; height:369px;">
+                                <div class="col-md-6">
+                                    <div>Tên nhà khoa học:</div>
+                                    <b>@order.sthamso2</b>
+                                    <div style="margin-top:20px">Học vị- Học hàm:</div>
+
+                                    <b>@order.sthamso1 - @order.sthamso3</b>
+                                    <br />
+                                    <img id="imglogo" src="@order.img" alt="Image " style="width:150px; height:150px;margin-bottom:1px">
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div style="margin-top:20px">Ngành đào tạo:</div>
+                                    <b>@(order.sthamso6)</b>
+                                    <div style="margin-top:20px">Chuyên ngành đào tạo:</div>
+                                    <b>@(order.sthamso5)</b>
+                                    <div style="margin-top:20px">Đơn vị quản lí:</div>
+                                    <b>@(order.dtthamso1)</b>
+                                    <div style="background-color:lavender; color:red; font-size:large">Mã số nhà khoa học: @order.ithamso2</div>
+                                </div>
+                                <div>
+                                    <RadzenButton Text="Xem Chi Tiết" Style="margin-left:14px" />
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <div style="margin-top:20px">Ngành đào tạo:</div>
-                                <b>@(order.Nganhdaotao)</b>
-                                <div style="margin-top:20px">Chuyên ngành đào tạo:</div>
-                                <b>@(order.Chuyennganh)</b>
-                                <div style="margin-top:20px">Đơn vị quản lí:</div>
-                                <b>@(order.Donviquanli)</b>
-                            </div>
-                        </div>
-
-                    </RadzenCard>
-                </Template>
-            </RadzenDataList>
-        </RadzenTabsItem>
-    </Tabs>
-</RadzenTabs>
-
-@code {
+                        </RadzenCard>
+                    </Template>
+                </RadzenDataList>
+            </RadzenTabsItem>
+        </Tabs>
+    </RadzenTabs>
+    </body>
+    @code {
 
 
-    List<NhaKhoaHocHomeViewModel> orders;
-    List<NhaKhoaHocHomeViewModel> nkhvmd = new List<NhaKhoaHocHomeViewModel>();
-    DataNhaKhoaHocServices dt = new DataNhaKhoaHocServices();
-    protected override async Task OnInitializedAsync()
-    {
-        nkhvmd = dt.lsnkhHome();
+        List<NhaKhoaHocHomeViewModel> orders;
+        List<NhaKhoaHocHomeViewModel> nkhvmd = new List<NhaKhoaHocHomeViewModel>();
+        DataNhaKhoaHocServices dt = new DataNhaKhoaHocServices();
+        protected override async Task OnInitializedAsync()
+        {
+            nkhvmd = dt.lsnkhHome();
 
-    }
+        }
 
-    // thêm các data mẫu
+        // thêm các data mẫu
 
 
 
-    public class Order
-    {
-        public int CardId { get; set; }
-        public string CardNr { get; set; }
-        public DateTime ExpiryDate { get; set; }
-        public string CardHolder { get; set; }
-        public string Name { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public int Country { get; set; }
-        public int StoreId { get; set; }
-        public string Warehouse { get; set; }
-        public string Region { get; set; }
-        public string System { get; set; }
-        public int TransId { get; set; }
-        public string Register { get; set; }
-        public string Clerk { get; set; }
-        public decimal Amount { get; set; }
-        public decimal Tax { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime ShipDate { get; set; }
+        public class Order
+        {
+            public int CardId { get; set; }
+            public string CardNr { get; set; }
+            public DateTime ExpiryDate { get; set; }
+            public string CardHolder { get; set; }
+            public string Name { get; set; }
+            public string Address1 { get; set; }
+            public string Address2 { get; set; }
+            public string City { get; set; }
+            public string State { get; set; }
+            public string Zip { get; set; }
+            public int Country { get; set; }
+            public int StoreId { get; set; }
+            public string Warehouse { get; set; }
+            public string Region { get; set; }
+            public string System { get; set; }
+            public int TransId { get; set; }
+            public string Register { get; set; }
+            public string Clerk { get; set; }
+            public decimal Amount { get; set; }
+            public decimal Tax { get; set; }
+            public DateTime OrderDate { get; set; }
+            public DateTime ShipDate { get; set; }
 
-    }
 
-    public class CreditCard
-    {
-        public int CardId { get; set; }
-        public string CardNr { get; set; }
-    }
+        }
 
-    public class Country
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+        public class CreditCard
+        {
+            public int CardId { get; set; }
+            public string CardNr { get; set; }
+        }
 
-    Order order = new Order()
-    {
-        ExpiryDate = DateTime.Parse("10/10/2022"),
-        OrderDate = DateTime.Now,
-        ShipDate = DateTime.Now
-    };
+        public class Country
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+        }
 
-    List<CreditCard> cards = new List<CreditCard>()
+        Order order = new Order()
+        {
+            ExpiryDate = DateTime.Parse("10/10/2022"),
+            OrderDate = DateTime.Now,
+            ShipDate = DateTime.Now
+        };
+
+        List<CreditCard> cards = new List<CreditCard>()
 {
         new CreditCard() { CardId = 1, CardNr = "5555555555554444" },
-        new CreditCard() { CardId = 2, CardNr = "4012888888881881" }
+        new CreditCard() { CardId = 2, CardNr = "33335464564564563" },
+        new CreditCard() { CardId = 3, CardNr = "34534645645645645" },
+        new CreditCard() { CardId = 4, CardNr = "3453464565" },
+        new CreditCard() { CardId = 5, CardNr = "879879789789" },
+        new CreditCard() { CardId = 6, CardNr = "6786554634545" },
+        new CreditCard() { CardId = 7, CardNr = "5687687687978987" },
+        new CreditCard() { CardId = 8, CardNr = "5675687808945423" }
+    };
+        List<CreditCard> card1 = new List<CreditCard>()
+{
+        new CreditCard() { CardId = 1, CardNr = "aaaa" },
+        new CreditCard() { CardId = 2, CardNr = "33335464564564563" },
+        new CreditCard() { CardId = 3, CardNr = "34534645645645645" },
+        new CreditCard() { CardId = 4, CardNr = "3453464565" },
+        new CreditCard() { CardId = 5, CardNr = "879879789789" },
+        new CreditCard() { CardId = 6, CardNr = "6786554634545" },
+        new CreditCard() { CardId = 7, CardNr = "5687687687978987" },
+        new CreditCard() { CardId = 8, CardNr = "5675687808945423" }
     };
 
-    List<Country> countries = new List<Country>()
+        List<Country> countries = new List<Country>()
 {
         new Country() { Id = 1, Name = "USA" },
         new Country() { Id = 2, Name = "Germany" }
     };
-
-    void Submit(Order arg)
+        public class Test
+        {
+            public int id { get; set; }
+            public int ithamso1 { get; set; }
+            public int ithamso2 { get; set; }
+            public string sthamso1 { get; set; }
+            public string sthamso2 { get; set; }
+            public string sthamso3 { get; set; }
+            public string sthamso4 { get; set; }
+            public string sthamso5 { get; set; }
+            public string sthamso6 { get; set; }
+            public float fthamso2 { get; set; }
+            public DateTime dtthamso1 { get; set; }
+            public string img { get; set; }
+        }
+        public List<Test> tests = new List<Test>()
     {
-        //
-    }
+         new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="dfwa" ,sthamso2="Nguyễn Văn A" ,sthamso3="You are our laptop ." ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
 
-    void Cancel()
-    {
-        //
-    }
-}
+        new Test() { id = 2, ithamso1 =23 ,ithamso2=124 ,sthamso1="wEFWE" ,sthamso2="Nguyễn Văn b" ,sthamso3="unlimited battary." ,
+             sthamso4="The Best Android Emulator " ,sthamso5="phim 3d" ,sthamso6="bbb",fthamso2=4564 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/a1.jpg"},
+
+        new Test() { id = 3, ithamso1 =34 ,ithamso2=34 ,sthamso1="WEFERAG" ,sthamso2="Nguyễn Văn c" ,sthamso3="reeted battary." ,
+             sthamso4="videos about how to use this powerful" ,sthamso5="phim hoạt hình" ,sthamso6="",fthamso2=45756 ,dtthamso1= DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+         new Test() { id = 4, ithamso1 =45 ,ithamso2=234 ,sthamso1="ERG.KL" ,sthamso2="Nguyễn Văn d" ,sthamso3="You are battary." ,
+             sthamso4="be able to play all your Android apps " ,sthamso5="phim viễn tưởng" ,sthamso6="ccc",fthamso2= 09453,dtthamso1=DateTime.Parse("10/10/2022") ,img= ""},
+
+        new Test() { id = 5, ithamso1 = 56,ithamso2=65 ,sthamso1="AERGERG" ,sthamso2="Nguyễn Văn e" ,sthamso3="are finascreen." ,
+             sthamso4=" PC with larger screen and unlimited" ,sthamso5="phim kinh dị" ,sthamso6="fff",fthamso2=3453 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+
+        new Test() { id = 6, ithamso1 =67 ,ithamso2= 089,sthamso1="C;VHTUI," ,sthamso2="Nguyễn Văn f" ,sthamso3="Yable to plattary." ,
+             sthamso4="On this page, you can watch the most popular " ,sthamso5="phim thiếu nhi" ,sthamso6="hhhhh",fthamso2=453 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/logosp.png"},
+
+        new Test() { id = 7, ithamso1 =78 ,ithamso2=215 ,sthamso1="RUMHFTRU" ,sthamso2="Nguyễn Văn g" ,sthamso3="You arbattary." ,
+             sthamso4="Millions of Games For You to Enjoy" ,sthamso5="phim doraemon" ,sthamso6="jkkkkkk",fthamso2=5678578 ,dtthamso1=DateTime.Parse("10/10/2022"),img= "images/user.png"},
+
+        new Test() { id = 8, ithamso1 =89 ,ithamso2= 562,sthamso1="TYJTEYJ" ,sthamso2="Nguyễn Văn h" ,sthamso3=" Android aped battary." ,
+             sthamso4="Popular Mobile Games on PC" ,sthamso5="phim tiểu thuyết" ,sthamso6="dddf",fthamso2=7678 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+
+        new Test() { id = 9, ithamso1 =90 ,ithamso2=124 ,sthamso1="TYJTEFJ6" ,sthamso2="Nguyễn Văn i" ,sthamso3="inally be able toed battary." ,
+             sthamso4="Featured Games" ,sthamso5="phim trinh thám" ,sthamso6="kklll",fthamso2=2342 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/avt.png"},
+
+        new Test() { id = 10, ithamso1 =100 ,ithamso2=264 ,sthamso1="TYJDFCTJE" ,sthamso2="Nguyễn Văn j" ,sthamso3="Youndroid app unlry." ,
+             sthamso4="okokokokoko" ,sthamso5="thế giới khoa học" ,sthamso6="xxxx",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+          new Test() { id = 11, ithamso1 =100 ,ithamso2=264 ,sthamso1="fwegr" ,sthamso2="Nguyễn Văn ưe" ,sthamso3="ffe app unlry." ,
+             sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+
+    };
+
     }
