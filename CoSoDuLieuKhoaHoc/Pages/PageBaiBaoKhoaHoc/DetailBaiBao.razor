@@ -1,0 +1,64 @@
+﻿@page "/DetailBaibao/{ID}"
+@using Data
+@using DataServices 
+@using Microsoft.EntityFrameworkCore
+@inject Radzen.DialogService dialogService
+@using Data;
+<h1>Thông Tin Đề Tài Khoa Học </h1>
+<RadzenCard>
+    <div>
+        <div> <b>Tên bài báo:	</b>@Tendetai</div> <br />
+
+                                                   <div class="d-flex justify-content-between">
+                                                       <div >
+                                                           <div> <b>Lĩnh vực: </b>@capdetai</div><br />
+                                                           <div> <b>Danh mục:</b>@donvict</div><br />
+                                                           <div> <b>Tác giả:</b>@donvith</div><br />
+                                                           <div> <b>Liên kết:</b>@loaihinh</div><br />
+                                                       </div>
+                                                       <div class="cardtapchi">
+                                                           <RadzenCard>
+                                                               <div> <b>Bài báo thuộc tạp chí: </b>@Tendetai</div>
+                                                               <div> <b> ISSN: </b>@donvith</div>
+                                                               <div> <b> Tạp chí: </b>@donvict</div>
+                                                               <div> <b>Cơ quan xuất bản:  </b>@xeploai</div>
+                                                               <div> <b> Loại tạp chí: </b>@loaihinh</div>
+                                                               <div> <b> Cấp tạp chí: </b>@phanloaisp</div>
+                                                               <div> <b>Năm đăng:  </b>@nambatdau</div>
+                                                               <div> <b> Tập: </b>@id</div>
+                                                               <div> <b>Số: </b>@baibaolq</div>
+                                                               <div> <b>Trang </b>1243</div>
+                                                           </RadzenCard>
+
+                                                       </div>
+                                                   </div>
+    </div>
+</RadzenCard>
+@code {
+    string madetai = "CS-DT T2018-190-GD-NN";
+    string Tendetai = "Nghiên cứu chiến lược đọc hiểu của sinh viên tiếng Anh không chuyên tại Trường Đại học Ngoại ngữ, Đại học Sư Phạm";
+    string capdetai = "Đề tài cấp Cơ sở";
+    string donvict = "Trường Đại học Ngoại ngữ";
+    string donvith = "Khoa Tiếng Anh chuyên ngành";
+    string loaihinh = "Cơ bản";
+    string linhvuc = "Khoa học giáo dục học nói chung, bao gồm cả đào tạo, sư phạm học, lý luận giáo dục,..";
+    string muctieu = "Nghiên cứu này nhằm mục đích tìm hiểu các chiến lược đọc hiểu được sử dụng bởi sinh viên các lớp tiếng Anh không chuyên bậc 2/6 và 3/6 tại trường Đại học Ngoại Ngữ Huế, đồng thời tìm hiểu sự khác nhau trong việc sử dụng các chiến lược này ở hai nhóm người học. Ngoài ra, nghiên cứu còn đưa ra một số khuyến nghị về cách hướng dẫn các chiến lược đọc trong lớp học đọc hiệu quả";
+    string noidung = "Nghiên cứu này được thực hiện với hai mục tiêu: tìm hiểu những chiến lược đọc hiểu các tài liệu tiếng Anh được sử dụng thường xuyên bởi các sinh viên tiếng Anh không chuyên và tìm hiểu sự khác nhau, nếu có, trong việc sử dụng các chiến lược này ở hai nhóm sinh viên có năng lực ngoại ngữ khác nhau. Phương pháp nghiên cứu chủ yếu là theo hướng mô tả với việc sử dụng bảng hỏi là công cụ thu thập số liệu chính.";
+    string ketqua = "Kết quả nghiên cứu cho thấy rằng: (1) sinh viên có nhận thức siêu nhận thức về quá trình đọc ở một mức độ nào đó và sử dụng các chiến lược đọc khá thường xuyên. Trong số ba loại chiến lược đọc được nghiên cứu trong nghiên cứu này, chiến lược hỗ trợ được người tham gia sử dụng thường xuyên nhất, với tần suất trung bình là tỷ lệ cao tương đối (M = 3,25). Các chiến lược giải quyết vấn đề theo sau về tần suất sử dụng, có tần suất (M = 3,15). Các chiến lược toàn cầu đã được sử dụng ở mức tần số thấp nhất với tổng điểm trung bình là 2,99. (2) Theo quan điểm của ba loại chiến lược đọc, nghiên cứu hiện tại cho thấy không có sự khác biệt có ý nghĩa thống kê trong việc sử dụng các chiến lược đọc hiểu giữa nhóm sinh viên A2 và B1. Từ đó, khuyến nghị cho việc dạy các chiến lược đọc để cải thiện khả năng đọc tiếng Anh của sinh viên đã được đưa ra.";
+    string nambatdau = "2020-08-13";
+    string namketthuc = "2020-08-13";
+    string xeploai = "Tốt";
+    string tinhtrang = "Đã hoàn thành";
+    string phanloaisp = "Sản phẩm khác";
+    string diachiud = "Khoa Tiếng Anh chuyên ngành";
+    string baibaolq = "0";
+    string kinhphidetai = "";
+    string thamgia = "Nguyễn Thị Phương Lan (Chủ nhiệm), Huỳnh Thị Long Hà, Nguyễn Phạm Thanh Vân";
+    int id = 123;
+    [Parameter] public int ID { get; set; }
+  
+    protected override async Task   OnInitializedAsync()
+    {
+    }
+
+}

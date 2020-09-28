@@ -1,0 +1,41 @@
+﻿@page "/DetailSach/{ID}"
+@using Data
+@using DataServices
+@using Microsoft.EntityFrameworkCore
+@inject Radzen.DialogService dialogService
+
+<h1>Thông Tin Sách Giáo Trình </h1>
+<RadzenCard>
+    <div>
+        <div class="h5"> <b>Tên sách:	</b>@tensach</div> <br />
+
+        <div>
+                <div> <b>ISBN: </b>@ISBN</div><br />
+                <div> <b>Loại sách: </b>@theloai</div><br />
+                <div> <b>Lĩnh vực: </b>@linhvuc</div><br />
+                <div> <b>Nhà xuất bản: </b>@tennsb</div><br />
+                <div> <b>Năm xuất bản: </b>@namxuatban</div>
+                <div> <b> Tác Giả: </b>@dstacgia</div>
+                <div> <b> File đính kèm: </b>@filedinhkem</div>
+            </div>
+    </div>
+</RadzenCard>
+@code {
+    public int sluong = 142;
+    string tennsb = "NXB Đại Học Sư Phạm, 2020";
+    string theloai = "Sách tham khảo";
+    string linhvuc = "Khoa Học Tự Nhiên";
+    string dstacgia = "Lê Văn Thăng, Trần Anh Tuấn, Đường Văn Hiếu, Hoàng Công Tín";
+    string tensach = "Chiến lược và Chính sách Môi trường";
+    string masach = "DTQG NVQG-2019/ĐT.06";
+    string ISBN = "978-604-974-612-3";
+    DateTime namxuatban = DateTime.Now;
+    string filedinhkem = "IMG-6614.JPG";
+    int id = 123;
+    [Parameter] public int ID { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
+}

@@ -1,55 +1,142 @@
-﻿@page "/Viewnkh"
+﻿
+@page "/Viewnkh"
+@inherits LayoutComponentBase 
 @using Radzen.Blazor
 @using Microsoft.EntityFrameworkCore
-<body style="background-color:lightgray">
+<body style="background-color:white">
     <div>
-        <div class="row" style="background-color:aqua ">
-            <!-- div thông tin-->
+        <div class="d-flex justify-content-between">
+            <!-- thông tin-->
+            <div style="padding-top:3rem">
+                <!--hình ảnh mã số-->
+                <div class="img-thumbnail">
+                    <img src="/images/0.jpg" alt="Image" class="imgavatar">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 style=" background-color: #D8D8D8" class="col-md-12 mt-1 text-center">Marina kociski</h4>
+                        <h4 style=" background-color: #D8D8D8" class="col-md-12 mt-2 text-center">@nganh</h4>
+                    </div>
+                </div>
+            </div>
             <div>
-                <!--div hình ảnh mã số-->
-                <img id="imglogo" src="/images/avt.png" alt="Image " style="width:360px; height:452px;margin-left:5px;margin-top:10px">
-                <RadzenLabel Text="123213312213"> </RadzenLabel>
-            </div>
-            <div style="float: right; margin: 20px;">
                 <!--số lượng-thông tin -chuyên môn-->
-                <!--div group-->
-                <div class="mat-elevation-z0" Style="float:left ;margin: 10px">
+                <!--group-->
+                <div class="d-flex justify-content-between" style="padding-left:3rem; padding-top:1rem">
+                    <div Style="float:left ;margin: 10px">
+                        <RadzenLabel Text="Bài báo: 445"></RadzenLabel>
+                    </div>
+                    <div Style="float:left;margin: 10px">
+                        <RadzenLabel Text="Sách Giáo trình:165 "></RadzenLabel>
+                    </div>
+                    <div Style="float:left; margin: 10px ">
 
-                    <RadzenLabel Text="Bài báo: 445
-                                 " ></RadzenLabel>
-                </div>
-                <div Style="float:left;margin: 10px">
-
-                    <RadzenLabel Text="Sách Giáo trình:165
+                        <RadzenLabel Text="Đề tài khoa học:457
                                  "></RadzenLabel>
+                    </div>
                 </div>
-                <div Style="float:left; margin: 10px ">
-
-                    <RadzenLabel Text="Đề tài khoa học:457
-                                 "></RadzenLabel>
+                <div class="d-flex justify-content-between">
+                    <!--thông tin-->
+                    <div>
+                        <b>Thông tin</b>
+                        <div style=" background-color: #D8D8D8">
+                            <p><b>Họ và tên</b></p> @hoten
+                            <p><b>Giới Tính</b></p> @gioitinh
+                            <p><b>Năm sinh</b> @namsinh</p>
+                        </div>
+                        <div style=" background-color: #D8D8D8">
+                            <p><b>Địa chỉ </b>@diachi</p>
+                        </div>
+                        <div style=" background-color: #D8D8D8">
+                            <p><b>Liên hệ</b></p>
+                            <p><b>Điện thoại </b></p>@dienthoai
+                            <p><b>Fax </b></p>@dienthoai
+                            <p><b>Email </b></p>@email
+                            <p><b>Trang web </b></p>@dienthoai
+                        </div>
+                    </div>
+                    <!--chuyên môn-->
+                    <div class="nkhdivthongtin2">
+                        <b style="font-size:large">Chuyên môn</b>
+                        <p><b>Chức danh</b> @nganh</p>
+                        <p><b>Nghành đào tạo</b><br />@nganh </p>
+                        <p><b>Chuyên ngành đào tạo</b><br />@chuỵennganh </p>
+                        <p><b>Chuyên môn giảng dạy</b><br />@chuyenmon </p>
+                        <p><b>Lĩnh vực nghiên cứu</b><br />@linhvuc </p>
+                        <p><b>Trình độ ngoại ngữ</b><br />@ngoaingu </p>
+                    </div>
                 </div>
-
             </div>
         </div>
 
     </div>
-    <div>
-        <!--div quá trình-->
-        <div>
-            <!--đơn vị-->
+    <br>
+    <Radzen.Blazor.RadzenAccordion></Radzen.Blazor.RadzenAccordion>
+
+    <b><p>QUÁ TRÌNH</p></b><br />
+    <div style="width:100%;text-align:center">
+        <div style="display:inline-block">
+            <!--div quá trình-->
+
+            <b><p>ĐƠN VỊ QUẢN LÍ</p></b>
+            <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                        AllowSorting="true" Data="@tests" TItem="Test" ColumnWidth="200px">
+
+                <Columns>
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Đơn vị" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso2" Title="Địa chỉ cơ quan" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Điện thoại" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso2" Title="Email cơ quan" />
+                </Columns>
+            </RadzenGrid>
         </div>
-        <div>
-            <!--công tác-->
+        <br />
+        <div style="display:inline-block">
+            <!--CÔNG TÁC-->
+            <b><p>QUÁ TRÌNH CÔNG TÁC</p></b>
+            <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                        AllowSorting="true" Data="@testss" TItem="Test">
+
+                <Columns>
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Thời gian" />
+                    <RadzenGridColumn Width="250px" TItem="Test" Property="sthamso2" Title="Cơ quan công tác" />
+                    <RadzenGridColumn Width="250px" TItem="Test" Property="sthamso3" Title="Chức vụ" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso4" Title="Chức danh công tác" />
+                </Columns>
+            </RadzenGrid>
         </div>
-        <div>
-            <!--đào tạo-->
+
+        <div style="display:inline-block">
+            <b><p>Đơn Vị Đào Tạo</p></b>
+            <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                        AllowSorting="true" Data="@testsss" TItem="Test">
+
+                <Columns>
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Bậc đào tạo" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso2" Title="Cơ sở đào tạo" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso3" Title="Ngành đào tạo" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso4" Title="Năm tốt nghiệp" />
+                </Columns>
+            </RadzenGrid>
+            <!--ĐÀO TẠO-->
         </div>
 
     </div>
-
 </body>
 
 @code {
+    string hoten = "Nguyễn Minh Tâm";
+    String gioitinh = "Nữ";
+    string diachi = "An Dương Vương";
+
+    string dienthoai = "0378730454";
+    string email = "nguyenthien1904@gmail.com";
+    string nganh = "Lý luận và phương pháp dạy học môn Sinh học";
+    string chuỵennganh = "Lý luận và phương pháp dạy học môn Sinh học";
+    string chuyenmon = "Động vật học";
+    string linhvuc = "Động vật học";
+    string ngoaingu = "Tiếng Anh (C - 0000)";
+    int namsinh = 19894;
 
     // thêm các data mẫu
 
@@ -143,6 +230,23 @@
         public DateTime dtthamso1 { get; set; }
         public string img { get; set; }
     }
+    public List<Test> testss = new List<Test>()
+{
+        new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Từ : 01/11/2008 Đến : 01/02/2009" ,sthamso2="Tổ Động vật - Khoa Sinh học - TRƯỜNG ĐẠI HỌC SƯ PHẠM" ,sthamso3="Giảng viên hợp đồng tạo nguồn Khoa Sinh, Trường Đại học Sư phạm Huế" ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+          new Test() { id = 2, ithamso1 = 12,ithamso2=232 ,sthamso1="Từ : 01/03/2009 Đến : 01/02/2010" ,sthamso2="Tổ Động vật - Khoa Sinh học - TRƯỜNG ĐẠI HỌC SƯ PHẠM" ,sthamso3="Giảng viên hợp đồng tạo nguồn Khoa Sinh, Trường Đại học Sư phạm Huế" ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
+              new Test() { id = 3, ithamso1 = 12,ithamso2=232 ,sthamso1="Từ : 01/03/2009 Đến : 01/02/2010" ,sthamso2="Tổ Động vật - Khoa Sinh học - TRƯỜNG ĐẠI HỌC SƯ PHẠM" ,sthamso3="Giảng viên hợp đồng tạo nguồn Khoa Sinh, Trường Đại học Sư phạm Huế" ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"}
+          };
+    public List<Test> testsss = new List<Test>()
+{
+         new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Thạc sĩ" ,sthamso2="Trường Đại học Sư phạm- Đại học Huế" ,sthamso3="	Sư phạm Sinh học" ,
+             sthamso4="2011" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
+            new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Thạc sĩ" ,sthamso2="Trường Đại học Sư phạm- TPHCM" ,sthamso3="	Sư phạm Toán" ,
+             sthamso4="2018" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"}
+    };
+
     public List<Test> tests = new List<Test>()
 {
          new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="dfwa" ,sthamso2="Nguyễn Văn A" ,sthamso3="You are our laptop ." ,
@@ -154,7 +258,7 @@
         new Test() { id = 3, ithamso1 =34 ,ithamso2=34 ,sthamso1="WEFERAG" ,sthamso2="Nguyễn Văn c" ,sthamso3="reeted battary." ,
              sthamso4="videos about how to use this powerful" ,sthamso5="phim hoạt hình" ,sthamso6="",fthamso2=45756 ,dtthamso1= DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
          new Test() { id = 4, ithamso1 =45 ,ithamso2=234 ,sthamso1="ERG.KL" ,sthamso2="Nguyễn Văn d" ,sthamso3="You are battary." ,
-             sthamso4="be able to play all your Android apps " ,sthamso5="phim viễn tưởng" ,sthamso6="ccc",fthamso2= 09453,dtthamso1=DateTime.Parse("10/10/2022") ,img= ""},
+             sthamso4="be able to play all your Android apps " ,sthamso5="phim viễn tưởng" ,sthamso6="ccc",fthamso2= 09453,dtthamso1=DateTime.Parse("10/10/2022") ,img="images/map.png"},
 
         new Test() { id = 5, ithamso1 = 56,ithamso2=65 ,sthamso1="AERGERG" ,sthamso2="Nguyễn Văn e" ,sthamso3="are finascreen." ,
              sthamso4=" PC with larger screen and unlimited" ,sthamso5="phim kinh dị" ,sthamso6="fff",fthamso2=3453 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
@@ -174,8 +278,9 @@
         new Test() { id = 10, ithamso1 =100 ,ithamso2=264 ,sthamso1="TYJDFCTJE" ,sthamso2="Nguyễn Văn j" ,sthamso3="Youndroid app unlry." ,
              sthamso4="okokokokoko" ,sthamso5="thế giới khoa học" ,sthamso6="xxxx",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
           new Test() { id = 11, ithamso1 =100 ,ithamso2=264 ,sthamso1="fwegr" ,sthamso2="Nguyễn Văn ưe" ,sthamso3="ffe app unlry." ,
-             sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
-
+             sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/map.png"},
+          new Test() { id = 12, ithamso1 =343 ,ithamso2=54645 ,sthamso1="Tham số 1" ,sthamso2="Nguyễn Văn 43rg" ,sthamso3="aaaaaaaaaaaaaaaaaaaaaaaaaaa." ,
+             sthamso4="aaaaaaaaaaaaaaaaaaaaaaaaaa" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2033") ,img= "images/avt.png"}
     };
     public Test t = new Test()
     {

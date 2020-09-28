@@ -1,3 +1,267 @@
 ﻿
 @page "/DeTaiKhoaHoc"
-@code{ }
+@inject DialogService dialogService
+<div class="timkiem">
+    <RadzenFieldset Text="Tìm kiếm thông tin đề tài">
+        <div class="d-flex justify-content-between" style="padding-left :2px;">
+            <div>
+                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn đơn vị" Data="@cards" style="width: 18rem; " TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                </RadzenDropDown>
+            </div>
+            <div>
+                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn nhà tác giả" Data="@cards" style="width: 18rem;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                </RadzenDropDown>
+            </div>
+            <div>
+                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn cấp đề tài" Data="@cards" style="width: 18rem;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                </RadzenDropDown>
+            </div>
+            <div>
+                <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn lĩnh vực" Data="@cards" style="width: 18rem;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
+                </RadzenDropDown>
+            </div>
+
+        </div>
+        <div class="d-flex justify-content-between">
+
+            <div>
+                <RadzenTextBox style="width: 18rem;" Placeholder="Nhập từ khóa" />
+            </div>
+            <div>
+                <RadzenDatePicker style="width: 18rem;" Name="từ" @bind-Value="order.OrderDate" />
+
+            </div>
+            <div>
+                <RadzenDatePicker style="width: 18rem;" Name="đến" @bind-Value="order.ShipDate" />
+            </div>
+            <div>
+                <RadzenButton Text="Tìm kiếm" Style="width:18rem"></RadzenButton>
+            </div>
+        </div>
+
+    </RadzenFieldset>
+</div>
+
+<div class="d-flex bd-highlight mb-3">
+    <div class="p-2 bd-highlight">Dữ Liệu Đề Tài</div>
+    <div class="ml-auto p-2 bd-highlight">
+        @sluong <p>Kết Quả</p>
+    </div>
+    <div class="p-2 bd-highlight"><RadzenButton>Xuất Excel</RadzenButton></div>
+
+</div>
+@foreach (var i in tests)
+{
+    <div>
+        <!--thông tin-->
+        <div Style="width:auto; margin-bottom: 20px; height:auto;">
+            <RadzenCard>
+
+                <div class="d-flex bd-highlight mb-3">
+                    <div class="mr-auto p-2 bd-highlight">
+                        <a style="color:darkorange">RENEWABLE ENERGY DEVELOPMENT POTENTIALS IN COMMERCIAL </a>
+                    </div>
+                    <div class="p-2 bd-highlight" style="color:red">
+                        @i.sthamso1
+                    </div>
+                </div>
+                <div style="width:100%;">
+                    <div>Lĩnh Vực:</div>
+                    <b>  @i.sthamso2</b>
+                    <div>Đơn vị chủ trì:</div>
+                    <b>  @i.sthamso3</b>
+                    <div>Đơn vị thực hiện:</div>
+                    <b>  @i.sthamso4</b>
+                    <div>Người tham gia:</div>
+                    <b>  @i.sthamso5</b>
+
+                </div>
+                <RadzenButton Text="Xem Thông tin chi tiết" Click="@(args => dialogService.Open<DetailDeTaiKhoaHoc>($"id {ID}",
+                        new Dictionary<string, object>() { { "id", ID } },
+                        new DialogOptions(){ Width = "700px", Height = "600px" }))" />
+            </RadzenCard>
+        </div>
+    </div>
+    <br />
+    <br />
+}
+
+
+@code{
+    int ID = 123;
+
+    Dictionary<DateTime, string> events = new Dictionary<DateTime, string>();
+
+    protected override void OnInitialized()
+    {
+        dialogService.OnOpen += Open;
+        dialogService.OnClose += Close;
+    }
+
+    void Open(string title, Type type, Dictionary<string, object> parameters, DialogOptions options)
+    {
+        events.Add(DateTime.Now, "Dialog opened");
+        StateHasChanged();
+    }
+
+    void Close(dynamic result)
+    {
+        events.Add(DateTime.Now, "Dialog closed. Result: " + result);
+        StateHasChanged();
+    }
+
+    async Task ShowSimpleDialog() => await dialogService.OpenAsync("Simple Dialog", ds =>
+    @<RadzenCard Style="padding: 20px;">
+        <p Style="margin-bottom: 10px;">Confirm?</p>
+        <div class="row">
+            <div class="col-md-12">
+                <RadzenButton Text="Ok" Click="()=> ds.Close(true)" Style="margin-bottom: 10px; width: 150px" />
+                <RadzenButton Text="Cancel" Click="()=> ds.Close(false)" ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+            </div>
+        </div>
+    </RadzenCard>);
+public int sluong = 142;
+string linhvuc = "Khoa học trái đất và khoa học môi trường liên quan khác";
+string donvichutri = " Cộng tác viên ngoài Đại học Huế";
+string diachi = "Cộng tác viên ngoài Đại học Huế";
+
+string donvithuchien = "Khoa Lâm nghiệp";
+string nguoithamgia = "Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi";
+string tendetai = "RENEWABLE ENERGY DEVELOPMENT POTENTIALS IN COMMERCIAL AND INDUSTRIAL SECTOR IN DANANG CITY AND THUA THIEN HUE PROVINCE";
+string madetai = "DTQG NVQG-2019/ĐT.06";
+
+public class Order
+{
+public int CardId { get; set; }
+public string CardNr { get; set; }
+public DateTime ExpiryDate { get; set; }
+public string CardHolder { get; set; }
+public string Name { get; set; }
+public string Address1 { get; set; }
+public string Address2 { get; set; }
+public string City { get; set; }
+public string State { get; set; }
+public string Zip { get; set; }
+public int Country { get; set; }
+public int StoreId { get; set; }
+public string Warehouse { get; set; }
+public string Region { get; set; }
+public string System { get; set; }
+public int TransId { get; set; }
+public string Register { get; set; }
+public string Clerk { get; set; }
+public decimal Amount { get; set; }
+public decimal Tax { get; set; }
+public DateTime OrderDate { get; set; }
+public DateTime ShipDate { get; set; }
+
+
+}
+
+public class CreditCard
+{
+public int CardId { get; set; }
+public string CardNr { get; set; }
+}
+
+public class Country
+{
+public int Id { get; set; }
+public string Name { get; set; }
+}
+
+Order order = new Order()
+{
+ExpiryDate = DateTime.Parse("10/10/2022"),
+OrderDate = DateTime.Now,
+ShipDate = DateTime.Now
+};
+
+List<CreditCard>
+cards = new List<CreditCard>
+()
+{
+        new CreditCard() { CardId = 1, CardNr = "5555555555554444" },
+        new CreditCard() { CardId = 2, CardNr = "33335464564564563" },
+        new CreditCard() { CardId = 3, CardNr = "34534645645645645" },
+        new CreditCard() { CardId = 4, CardNr = "3453464565" },
+        new CreditCard() { CardId = 5, CardNr = "879879789789" },
+        new CreditCard() { CardId = 6, CardNr = "6786554634545" },
+        new CreditCard() { CardId = 7, CardNr = "5687687687978987" },
+        new CreditCard() { CardId = 8, CardNr = "5675687808945423" }
+                        };
+List<CreditCard>
+card1 = new List<CreditCard>
+()
+{
+                new CreditCard() { CardId = 1, CardNr = "aaaa" },
+                new CreditCard() { CardId = 2, CardNr = "33335464564564563" },
+                new CreditCard() { CardId = 3, CardNr = "34534645645645645" },
+                new CreditCard() { CardId = 4, CardNr = "3453464565" },
+                new CreditCard() { CardId = 5, CardNr = "879879789789" },
+                new CreditCard() { CardId = 6, CardNr = "6786554634545" },
+                new CreditCard() { CardId = 7, CardNr = "5687687687978987" },
+                new CreditCard() { CardId = 8, CardNr = "5675687808945423" }
+                            };
+
+List<Country>
+countries = new List<Country>
+()
+{
+                        new Country() { Id = 1, Name = "USA" },
+                        new Country() { Id = 2, Name = "Germany" }
+                            };
+public class Test
+{
+public int id { get; set; }
+public int ithamso1 { get; set; }
+public int ithamso2 { get; set; }
+public string sthamso1 { get; set; }
+public string sthamso2 { get; set; }
+public string sthamso3 { get; set; }
+public string sthamso4 { get; set; }
+public string sthamso5 { get; set; }
+public string sthamso6 { get; set; }
+public float fthamso2 { get; set; }
+public DateTime dtthamso1 { get; set; }
+public string img { get; set; }
+}
+public List<Test>
+tests = new List<Test>
+()
+{
+                                new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 2, ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 3, ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+                                new Test() { id = 4,  ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 5,  ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 6, ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 7, ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 8,  ithamso1 = 12,ithamso2=232 ,sthamso1="Khoa học trái đất và khoa học môi trường liên quan khác" ,sthamso2="Cộng tác viên ngoài Đại học Huế" ,sthamso3="Khoa Lâm nghiệp" ,
+                                sthamso4="Trần Anh Tuấn (Chủ nhiệm), Nguyễn Bắc Giang, Lê Thị Tịnh Chi",sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+
+                                new Test() { id = 9, ithamso1 =90 ,ithamso2=124 ,sthamso1="TYJTEFJ6" ,sthamso2="Nguyễn Văn i" ,sthamso3="inally be able toed battary." ,
+                                sthamso4="Featured Games" ,sthamso5="phim trinh thám" ,sthamso6="kklll",fthamso2=2342 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/avt.png"},
+
+                                new Test() { id = 10, ithamso1 =100 ,ithamso2=264 ,sthamso1="TYJDFCTJE" ,sthamso2="Nguyễn Văn j" ,sthamso3="Youndroid app unlry." ,
+                                sthamso4="okokokokoko" ,sthamso5="thế giới khoa học" ,sthamso6="xxxx",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+                                new Test() { id = 11, ithamso1 =100 ,ithamso2=264 ,sthamso1="fwegr" ,sthamso2="Nguyễn Văn ưe" ,sthamso3="ffe app unlry." ,
+                                sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/map.png"},
+                                new Test() { id = 12, ithamso1 =343 ,ithamso2=54645 ,sthamso1="Tham số 1" ,sthamso2="Nguyễn Văn 43rg" ,sthamso3="aaaaaaaaaaaaaaaaaaaaaaaaaaa." ,
+                                sthamso4="aaaaaaaaaaaaaaaaaaaaaaaaaa" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2033") ,img= "images/avt.png"}
+                            };
+
+}

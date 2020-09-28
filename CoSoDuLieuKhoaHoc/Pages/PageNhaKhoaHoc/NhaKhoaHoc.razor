@@ -10,7 +10,7 @@
 @using CoSoDuLieuKhoaHoc.DataServices
 @inject QLKhoaHocContext Dbcontext
 <br />
-<div>
+<div class="timkiem">
     <RadzenFieldset Text="Tìm Kiếm Thông tin nhà khoa học">
         <div class="row">
             <div class="col-md-3">
@@ -38,15 +38,15 @@
                 <RadzenDropDown @bind-Value="order.CardId" AllowClear="true" Placeholder="Chọn lĩnh vực nghiên cứu" Data="@cards" style="width: 100%;" TextProperty="CardNr" ValueProperty="CardId" Name="CardId">
                 </RadzenDropDown>
             </div>
-            <div class="col-md-3">
-                <div class="col-md-8 align-items-center d-flex">
+            <div class="d-flex bd-highlight">
+                <div class="p-2 flex-fill bd-highlight">
                     <RadzenLabel Text="Nhập từ khóa" />
                 </div>
-                <div class="col-md-8">
-                    <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                <div class="p-2 flex-fill bd-highlight">
+                    <RadzenTextBox Name="CardNr" />
                 </div>
             </div>
-            <RadzenButton Text="Tìm Kiếm" Style="margin-bottom: 20px; width: 150px; margin-right:3px;" />
+            <RadzenButton Text="Tìm Kiếm"/>
         </div>
 
     </RadzenFieldset>
@@ -82,8 +82,8 @@
                                 <div style="background-color:lavender; color:red; font-size:large">Mã số nhà khoa học: @order.ithamso2</div>
                             </div>
                             <div>
-                                <RadzenButton Text="Xem Chi Tiết" Style="margin-left:14px" />
-                            </div>
+                                <RadzenButton><RadzenLink Path="Viewnkh" Text="Xem Chi Tiết" Style="margin-left:14px" /></RadzenButton>
+</div>
                         </div>
                     </RadzenCard>
                 </Template>
@@ -201,7 +201,7 @@
     public List<Test> tests = new List<Test>()
 {
          new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="dfwa" ,sthamso2="Nguyễn Văn A" ,sthamso3="You are our laptop ." ,
-             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
 
         new Test() { id = 2, ithamso1 =23 ,ithamso2=124 ,sthamso1="wEFWE" ,sthamso2="Nguyễn Văn b" ,sthamso3="unlimited battary." ,
              sthamso4="The Best Android Emulator " ,sthamso5="phim 3d" ,sthamso6="bbb",fthamso2=4564 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/a1.jpg"},
@@ -209,7 +209,7 @@
         new Test() { id = 3, ithamso1 =34 ,ithamso2=34 ,sthamso1="WEFERAG" ,sthamso2="Nguyễn Văn c" ,sthamso3="reeted battary." ,
              sthamso4="videos about how to use this powerful" ,sthamso5="phim hoạt hình" ,sthamso6="",fthamso2=45756 ,dtthamso1= DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
          new Test() { id = 4, ithamso1 =45 ,ithamso2=234 ,sthamso1="ERG.KL" ,sthamso2="Nguyễn Văn d" ,sthamso3="You are battary." ,
-             sthamso4="be able to play all your Android apps " ,sthamso5="phim viễn tưởng" ,sthamso6="ccc",fthamso2= 09453,dtthamso1=DateTime.Parse("10/10/2022") ,img= ""},
+             sthamso4="be able to play all your Android apps " ,sthamso5="phim viễn tưởng" ,sthamso6="ccc",fthamso2= 09453,dtthamso1=DateTime.Parse("10/10/2022") ,img="images/0.jpg"},
 
         new Test() { id = 5, ithamso1 = 56,ithamso2=65 ,sthamso1="AERGERG" ,sthamso2="Nguyễn Văn e" ,sthamso3="are finascreen." ,
              sthamso4=" PC with larger screen and unlimited" ,sthamso5="phim kinh dị" ,sthamso6="fff",fthamso2=3453 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
@@ -221,7 +221,7 @@
              sthamso4="Millions of Games For You to Enjoy" ,sthamso5="phim doraemon" ,sthamso6="jkkkkkk",fthamso2=5678578 ,dtthamso1=DateTime.Parse("10/10/2022"),img= "images/user.png"},
 
         new Test() { id = 8, ithamso1 =89 ,ithamso2= 562,sthamso1="TYJTEYJ" ,sthamso2="Nguyễn Văn h" ,sthamso3=" Android aped battary." ,
-             sthamso4="Popular Mobile Games on PC" ,sthamso5="phim tiểu thuyết" ,sthamso6="dddf",fthamso2=7678 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+             sthamso4="Popular Mobile Games on PC" ,sthamso5="phim tiểu thuyết" ,sthamso6="dddf",fthamso2=7678 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/0.jpg"},
 
         new Test() { id = 9, ithamso1 =90 ,ithamso2=124 ,sthamso1="TYJTEFJ6" ,sthamso2="Nguyễn Văn i" ,sthamso3="inally be able toed battary." ,
              sthamso4="Featured Games" ,sthamso5="phim trinh thám" ,sthamso6="kklll",fthamso2=2342 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/avt.png"},
@@ -229,8 +229,9 @@
         new Test() { id = 10, ithamso1 =100 ,ithamso2=264 ,sthamso1="TYJDFCTJE" ,sthamso2="Nguyễn Văn j" ,sthamso3="Youndroid app unlry." ,
              sthamso4="okokokokoko" ,sthamso5="thế giới khoa học" ,sthamso6="xxxx",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
           new Test() { id = 11, ithamso1 =100 ,ithamso2=264 ,sthamso1="fwegr" ,sthamso2="Nguyễn Văn ưe" ,sthamso3="ffe app unlry." ,
-             sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
-
+             sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/map.png"},
+          new Test() { id = 12, ithamso1 =343 ,ithamso2=54645 ,sthamso1="Tham số 1" ,sthamso2="Nguyễn Văn 43rg" ,sthamso3="aaaaaaaaaaaaaaaaaaaaaaaaaaa." ,
+             sthamso4="aaaaaaaaaaaaaaaaaaaaaaaaaa" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2033") ,img= "images/avt.png"}
     };
 
 }
