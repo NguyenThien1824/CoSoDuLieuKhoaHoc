@@ -1,84 +1,79 @@
 ﻿
 @page "/Viewnkh"
-@inherits LayoutComponentBase 
+@inherits LayoutComponentBase
 @using Radzen.Blazor
 @using Microsoft.EntityFrameworkCore
 <body style="background-color:white">
-    <div>
-        <div class="d-flex justify-content-between">
-            <!-- thông tin-->
-            <div style="padding-top:3rem">
-                <!--hình ảnh mã số-->
-                <div class="img-thumbnail">
-                    <img src="/images/0.jpg" alt="Image" class="imgavatar">
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4 style=" background-color: #D8D8D8" class="col-md-12 mt-1 text-center">Marina kociski</h4>
-                        <h4 style=" background-color: #D8D8D8" class="col-md-12 mt-2 text-center">@nganh</h4>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <!--số lượng-thông tin -chuyên môn-->
-                <!--group-->
-                <div class="d-flex justify-content-between" style="padding-left:3rem; padding-top:1rem">
-                    <div Style="float:left ;margin: 10px">
-                        <RadzenLabel Text="Bài báo: 445"></RadzenLabel>
-                    </div>
-                    <div Style="float:left;margin: 10px">
-                        <RadzenLabel Text="Sách Giáo trình:165 "></RadzenLabel>
-                    </div>
-                    <div Style="float:left; margin: 10px ">
+    <!--số lượng-thông tin -chuyên môn-->
+    <!--group-->
+    <div class="d-flex justify-content-around" style="padding-top:2rem">
+        <div>
+            <img class="thumb" src="/images/baibao.jpg">
+            <RadzenLabel Text="Bài báo: 445" class="txthumb"></RadzenLabel>
+        </div>
+        <div>
+            <img class="thumb" src="/images/bôk.jpg">
+            <RadzenLabel Text="Sách Giáo trình:165 " class="txthumb"></RadzenLabel>
+        </div>
+        <div>
+            <img class="thumb" src="/images/detai.jpg">
+            <RadzenLabel Text="Đề tài khoa học:457" class="txthumb"></RadzenLabel>
+        </div>
+    </div>
 
-                        <RadzenLabel Text="Đề tài khoa học:457
-                                 "></RadzenLabel>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <!--thông tin-->
-                    <div>
-                        <b>Thông tin</b>
-                        <div style=" background-color: #D8D8D8">
-                            <p><b>Họ và tên</b></p> @hoten
-                            <p><b>Giới Tính</b></p> @gioitinh
-                            <p><b>Năm sinh</b> @namsinh</p>
-                        </div>
-                        <div style=" background-color: #D8D8D8">
-                            <p><b>Địa chỉ </b>@diachi</p>
-                        </div>
-                        <div style=" background-color: #D8D8D8">
-                            <p><b>Liên hệ</b></p>
-                            <p><b>Điện thoại </b></p>@dienthoai
-                            <p><b>Fax </b></p>@dienthoai
-                            <p><b>Email </b></p>@email
-                            <p><b>Trang web </b></p>@dienthoai
-                        </div>
-                    </div>
-                    <!--chuyên môn-->
-                    <div class="nkhdivthongtin2">
-                        <b style="font-size:large">Chuyên môn</b>
-                        <p><b>Chức danh</b> @nganh</p>
-                        <p><b>Nghành đào tạo</b><br />@nganh </p>
-                        <p><b>Chuyên ngành đào tạo</b><br />@chuỵennganh </p>
-                        <p><b>Chuyên môn giảng dạy</b><br />@chuyenmon </p>
-                        <p><b>Lĩnh vực nghiên cứu</b><br />@linhvuc </p>
-                        <p><b>Trình độ ngoại ngữ</b><br />@ngoaingu </p>
-                    </div>
+    <div class="d-flex justify-content-around" style="width:100%;margin-top:2rem;margin-left:1rem">
+        <!-- ảnh-->
+        <div>
+            <!--hình ảnh mã số-->
+            <div class="img-thumbnail">
+                <img src="/images/0.jpg" alt="Image" class="imgavatar">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 style=" color: orangered" class="col-md-12 mt-1 text-center">Marina kociski</h4>
+                    <h4 style=" color: orangered" class="col-md-12 mt-2 text-center">@nganh</h4>
                 </div>
             </div>
         </div>
+        <!--thông tin-->
+        <div>
+            <b>Thông tin</b>
+            <div>
+                <b>Họ và tên</b> @hoten<br />
+                <b>Giới Tính</b> @gioitinh<br />
+                <b>Năm sinh</b> @namsinh <br />
+            </div>
+            <div>
+                <b>Địa chỉ </b>@diachi<br />
+            </div>
+            <div>
+                <b>Liên hệ</b><br />
+                <b>Điện thoại </b>@dienthoai<br />
+                <b>Fax </b>@dienthoai<br />
+                <b>Email </b>@email<br />
+                <b>Trang web </b>@dienthoai<br />
+            </div>
 
+        </div>
+        <!--chuyên môn-->
+        <div>
+            <b style="font-size:large">Chuyên môn</b><br />
+            <b>Chức danh</b> @nganh<br />
+            <b>Nghành đào tạo</b><br />@nganh <br />
+            <b>Chuyên ngành đào tạo</b><br />@chuỵennganh <br />
+            <b>Chuyên môn giảng dạy</b><br />@chuyenmon <br />
+            <b>Lĩnh vực nghiên cứu</b><br />@linhvuc <br />
+            <b>Trình độ ngoại ngữ</b><br />@ngoaingu <br />
+        </div>
     </div>
-    <br>
-    <Radzen.Blazor.RadzenAccordion></Radzen.Blazor.RadzenAccordion>
+   
 
-    <b><p>QUÁ TRÌNH</p></b><br />
+    <div class="tieude">QUÁ TRÌNH</div>
     <div style="width:100%;text-align:center">
         <div style="display:inline-block">
             <!--div quá trình-->
 
-            <b><p>ĐƠN VỊ QUẢN LÍ</p></b>
+            <div class="tieude">ĐƠN VỊ QUẢN LÍ</div>
             <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
                         AllowSorting="true" Data="@tests" TItem="Test" ColumnWidth="200px">
 
@@ -90,10 +85,10 @@
                 </Columns>
             </RadzenGrid>
         </div>
-        <br />
+        <wbr />
         <div style="display:inline-block">
             <!--CÔNG TÁC-->
-            <b><p>QUÁ TRÌNH CÔNG TÁC</p></b>
+            <div class="tieude">QUÁ TRÌNH CÔNG TÁC</div>
             <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
                         AllowSorting="true" Data="@testss" TItem="Test">
 
@@ -105,9 +100,9 @@
                 </Columns>
             </RadzenGrid>
         </div>
-
+        <wbr />
         <div style="display:inline-block">
-            <b><p>Đơn Vị Đào Tạo</p></b>
+            <div class="tieude">ĐƠN VỊ ĐÀO TẠO</div>
             <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
                         AllowSorting="true" Data="@testsss" TItem="Test">
 

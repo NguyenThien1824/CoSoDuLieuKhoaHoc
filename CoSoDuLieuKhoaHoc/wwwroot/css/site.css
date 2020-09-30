@@ -1,4 +1,4 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 html,
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -33,31 +33,7 @@ a,
 }
 
 
-/*buttonlogin*/
 
-.btnlogin {
-    background-color: #44c767;
-    border-radius: 30px;
-    border: 4px solid #18ab29;
-    display: inline-block;
-    cursor: pointer;
-    color: #db2edb;
-    font-family: Arial;
-    font-size: 14px;
-    padding: 11px 27px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #2f6627;
-    margin-top: 10px;
-}
-
-.btnlogin:hover {
-    background-color: #5cbf2a;
-}
-
-.btnlogin:active {
-    position: relative;
-    top: 2px;
-}
 
 .btninf {
     background-color: #44c767;
@@ -115,7 +91,10 @@ a,
 /**/
 
 #titletop {
-    height: 10rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    height: 5rem;
 }
 
 .btn-primary {
@@ -175,6 +154,7 @@ app {
 .sidebar {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
     background-color: mediumaquamarine;
+   
 }
 
 .sidebar .top-row {
@@ -188,8 +168,9 @@ app {
 .sidebar .oi {
     width: 2rem;
     font-size: 1.1rem;
-    vertical-align: text-top;
-    top: -2px;
+    vertical-align: text-bottom;
+
+        
 }
 
 .sidebar .nav-item {
@@ -214,22 +195,50 @@ app {
     line-height: 3rem;
 }
 
-.sidebar .nav-item a.active {
-    background-color: mediumaquamarine;
-    color: white;
-}
+    .sidebar .nav-item a.active {
+        /*CSS  của <li> đang chọn*/
+        background-color: mediumaquamarine;
+        color: white;
+        font-size: 20px;
+        /*chữ nhấp nháy khi chọn*/
+        -webkit-animation: my 1000ms infinite;
+        -moz-animation: my 1000ms infinite;
+        -o-animation: my 1000ms infinite;
+        animation: my 1000ms infinite;
+        /*chữ nhấp nháy khi chọn*/
+    }
+    /*css tạo chữ nhấp nháy*/
+@keyframes my {
+    0% {
+        color: #F8CD0A;
+    }
 
-.sidebar .nav-item a:hover {
-    background-color: mediumaquamarine;
-    color: white;
+    50% {
+        color: #fff;
+    }
+
+    100% {
+        color: #000000; 
+    }
 }
+    /*//*/
+
+    .sidebar .nav-item a:hover {
+        /*css khi rê chuột*/
+        background-color: mediumaquamarine;
+        color: Red;
+        font-size: 20px;
+        background-color: lavender;
+    }
 
 .content {
     padding-top: 1.1rem;
+
 }
 
 .navbar-toggler {
     background-color: rgba(255, 255, 255, 0.1);
+
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -265,7 +274,7 @@ app {
 
 @media (max-width: 767.98px) {
     .main .top-row:not(.auth) {
-        display: none;
+        display: flex;
     }
     .main .top-row.auth {
         justify-content: space-between;
@@ -285,6 +294,7 @@ app {
         height: 100vh;
         position: sticky;
         top: 0;
+
     }
     .main .top-row {
         position: sticky;
@@ -296,11 +306,13 @@ app {
     }
     .navbar-toggler {
         display: none;
+        
     }
     .sidebar .collapse {
         /* Never collapse the sidebar for wide screens */
-        display: block;
+        display: flex;
         margin-top: 5rem;
+
     }
 }
 
@@ -462,4 +474,47 @@ header {
     background-color: red;
     color: white;
     text-align: center;
+    display: inline-block;
+}
+/***************************/
+
+/*logodhsp trang chủ*/
+.Logo {
+   width:160px;
+   height:75px;
+   padding-left:3rem;
+}
+.NameimgLogo {
+   width:250px;
+   height:80px;
+   padding-top:4.5px;
+
+   
+}
+/*logodhsp trang chủ*/
+
+.maindiv_boder{
+    border-width:2px;
+    border-color:chartreuse;
+}
+
+
+.thumb {
+    border-style: solid;
+    width: 120px;
+    height: 120px;
+  border-width:6px;
+    border-color: mediumspringgreen;
+}
+.txthumb {
+    border-style: solid;
+    border-color: mediumspringgreen;
+    margin-left: -4px;
+    border-width: 6px;
+    border-left-width: 0px;
+}
+.tieude{
+    color:red;
+    margin-top:3rem;
+
 }
