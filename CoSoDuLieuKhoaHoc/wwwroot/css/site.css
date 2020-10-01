@@ -169,14 +169,16 @@ app {
     width: 2rem;
     font-size: 1.1rem;
     vertical-align: text-bottom;
+    /*item trong danh mục nav*/
 
         
 }
 
-.sidebar .nav-item {
-    font-size: 0.9rem;
-    padding-bottom: 0.5rem;
-}
+    .sidebar .nav-item {
+        font-size: 0.9rem;
+        padding-bottom: 0.5rem;
+      
+    }
 
 .sidebar .nav-item:first-of-type {
     padding-top: 1rem;
@@ -185,8 +187,10 @@ app {
 .sidebar .nav-item:last-of-type {
     padding-bottom: 1rem;
 }
-
-.sidebar .nav-item a {
+.sidebar .nav-item.active {
+            background-color:red;
+        }
+            .sidebar .nav-item a {
     color: #d7d7d7;
     border-radius: 25px;
     height: 3rem;
@@ -200,7 +204,7 @@ app {
         background-color: mediumaquamarine;
         color: white;
         font-size: 20px;
-        /*chữ nhấp nháy khi chọn*/
+        /*chữ nhấp nháy khi chọn
         -webkit-animation: my 1000ms infinite;
         -moz-animation: my 1000ms infinite;
         -o-animation: my 1000ms infinite;
@@ -497,6 +501,8 @@ header {
     border-width:2px;
     border-color:chartreuse;
 }
+
+
 
 
 .thumb {

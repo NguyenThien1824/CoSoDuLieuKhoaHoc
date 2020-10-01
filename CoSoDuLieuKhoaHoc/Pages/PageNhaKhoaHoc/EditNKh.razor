@@ -1,0 +1,294 @@
+﻿@page "/editnkh"
+@using Radzen.Blazor
+@using Data 
+@using Microsoft.EntityFrameworkCore
+<body style="background-color:white">
+    <!--số lượng-thông tin -chuyên môn-->
+    <!--group-->
+
+    <div class="d-flex justify-content-around" style="width:100%;margin-top:2rem;margin-left:1rem">
+        <!-- ảnh-->
+        <div>
+            <!--hình ảnh mã số-->
+            <div class="img-thumbnail">
+                <img src="/images/0.jpg" alt="Image" class="imgavatar">
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 style=" color: orangered" class="col-md-12 mt-1 text-center">Marina kociski</h4>
+                    <h4 style=" color: orangered" class="col-md-12 mt-2 text-center">@nganh</h4>
+                </div>
+            </div>
+        </div>
+        <!--thông tin-->
+        <div>
+            <b>Thông tin nhà khoa học</b>
+            <div style="margin-top:2rem;background-color:linen">
+                <b>Họ và tên</b>  <RadzenTextBox Value="@diachi" Style="width:100%"></RadzenTextBox><br />
+                <RadzenRadioButtonList @bind-Value="dienthoai">
+                    <Items>
+                        <RadzenRadioButtonListItem Text="Nam" Value="1" />
+                        <RadzenRadioButtonListItem Text="Nữ" Value="2" />
+                      
+                    </Items>
+                </RadzenRadioButtonList>
+                <b>Năm sinh</b> <RadzenTextBox Style="width:100%" Value="@namsinh.ToString()" /><br />
+
+            </div>
+            <div style="margin-top:2rem;background-color:linen">
+                <b>Địa chỉ </b><br />
+                <RadzenTextBox Style="width:100%" Value="@diachi" /><br />
+            </div>
+            <div style="margin-top:2rem;background-color:linen">
+                <h3>Liên hệ</h3><br />
+                <b>Điện thoại </b><RadzenTextBox Style="width:100%" Value="@dienthoai" /><br />
+                <b>Fax </b><RadzenTextBox Style="width:100%" Value="@dienthoai" /><br />
+                <b>Email </b><RadzenTextBox Style="width:100%" Value="@email" /><br />
+                <b>Trang web </b><RadzenTextBox Style="width:100%" Value="@linhvuc" /><br />
+            </div>
+
+        </div>
+        <!--chuyên môn-->
+        <div style="margin-top:2rem;background-color:linen">
+            <h3>Chuyên môn và học vấn</h3><br />
+            <b>Chức danh</b> <RadzenTextBox Value="@nganh" /><br />
+            <b>Nghành đào tạo</b><br /><RadzenTextBox Value="@nganh" /><br />
+            <b>Chuyên ngành đào tạo</b><br /><RadzenTextBox Value="@chuyenmon" /><br />
+            <b>Chuyên môn giảng dạy</b><br /><RadzenTextBox Value="@chuyenmon" /><br />
+            <b>Lĩnh vực nghiên cứu</b><br /><RadzenTextBox Value="@linhvuc" /><br />
+            <b>Trình độ ngoại ngữ</b><br /><RadzenTextBox Value="@ngoaingu" /><br />
+        </div>
+    </div>
+
+
+    <div class="tieude">QUÁ TRÌNH</div>
+    <div style="width:100%;text-align:center">
+        <div style="display:inline-block">
+            <!--div quá trình-->
+            <div class="tieude">ĐƠN VỊ QUẢN LÍ</div>
+            <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                        AllowSorting="true" Data="@tests" TItem="Test" ColumnWidth="200px">
+
+                <Columns>
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Đơn vị" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso2" Title="Địa chỉ cơ quan" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Điện thoại" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso2" Title="Email cơ quan" />
+                </Columns>
+            </RadzenGrid>
+        </div>
+        <wbr />
+        <div style="display:inline-block">
+            <!--CÔNG TÁC-->
+            <div class="tieude">QUÁ TRÌNH CÔNG TÁC</div>
+            <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                        AllowSorting="true" Data="@testss" TItem="Test">
+
+                <Columns>
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Thời gian" />
+                    <RadzenGridColumn Width="250px" TItem="Test" Property="sthamso2" Title="Cơ quan công tác" />
+                    <RadzenGridColumn Width="250px" TItem="Test" Property="sthamso3" Title="Chức vụ" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso4" Title="Chức danh công tác" />
+                </Columns>
+            </RadzenGrid>
+        </div>
+        <wbr />
+        <div style="display:inline-block">
+            <div class="tieude">ĐƠN VỊ ĐÀO TẠO</div>
+            <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                        AllowSorting="true" Data="@testsss" TItem="Test">
+
+                <Columns>
+                    <RadzenGridColumn TItem="Test" Property="sthamso1" Title="Bậc đào tạo" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso2" Title="Cơ sở đào tạo" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso3" Title="Ngành đào tạo" />
+                    <RadzenGridColumn TItem="Test" Property="sthamso4" Title="Năm tốt nghiệp" />
+                </Columns>
+            </RadzenGrid>
+            <!--ĐÀO TẠO-->
+        </div>
+
+    </div>
+</body>
+
+@code {
+    void gioitinh()
+    {
+       
+       
+    }
+    string hoten = "Nguyễn Minh Tâm";
+   
+    string diachi = "An Dương Vương";
+
+    string dienthoai = "0378730454";
+    string email = "nguyenthien1904@gmail.com";
+    string nganh = "Lý luận và phương pháp dạy học môn Sinh học";
+    string chuỵennganh = "Lý luận và phương pháp dạy học môn Sinh học";
+    string chuyenmon = "Động vật học";
+    string linhvuc = "Động vật học";
+    string ngoaingu = "Tiếng Anh (C - 0000)";
+    int namsinh = 19894;
+
+
+    // thêm các data mẫu
+
+    public class Order
+    {
+        public int CardId { get; set; }
+        public string CardNr { get; set; }
+        public DateTime ExpiryDate { get; set; }
+        public string CardHolder { get; set; }
+        public string Name { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zip { get; set; }
+        public int Country { get; set; }
+        public int StoreId { get; set; }
+        public string Warehouse { get; set; }
+        public string Region { get; set; }
+        public string System { get; set; }
+        public int TransId { get; set; }
+        public string Register { get; set; }
+        public string Clerk { get; set; }
+        public decimal Amount { get; set; }
+        public decimal Tax { get; set; }
+        public DateTime OrderDate { get; set; }
+        public DateTime ShipDate { get; set; }
+
+
+    }
+
+    public class CreditCard
+    {
+        public int CardId { get; set; }
+        public string CardNr { get; set; }
+    }
+
+    public class Country
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    Order order = new Order()
+    {
+        ExpiryDate = DateTime.Parse("10/10/2022"),
+        OrderDate = DateTime.Now,
+        ShipDate = DateTime.Now
+    };
+
+    List<CreditCard> cards = new List<CreditCard>()
+{
+        new CreditCard() { CardId = 1, CardNr = "5555555555554444" },
+        new CreditCard() { CardId = 2, CardNr = "33335464564564563" },
+        new CreditCard() { CardId = 3, CardNr = "34534645645645645" },
+        new CreditCard() { CardId = 4, CardNr = "3453464565" },
+        new CreditCard() { CardId = 5, CardNr = "879879789789" },
+        new CreditCard() { CardId = 6, CardNr = "6786554634545" },
+        new CreditCard() { CardId = 7, CardNr = "5687687687978987" },
+        new CreditCard() { CardId = 8, CardNr = "5675687808945423" }
+    };
+    List<CreditCard> card1 = new List<CreditCard>()
+{
+        new CreditCard() { CardId = 1, CardNr = "aaaa" },
+        new CreditCard() { CardId = 2, CardNr = "33335464564564563" },
+        new CreditCard() { CardId = 3, CardNr = "34534645645645645" },
+        new CreditCard() { CardId = 4, CardNr = "3453464565" },
+        new CreditCard() { CardId = 5, CardNr = "879879789789" },
+        new CreditCard() { CardId = 6, CardNr = "6786554634545" },
+        new CreditCard() { CardId = 7, CardNr = "5687687687978987" },
+        new CreditCard() { CardId = 8, CardNr = "5675687808945423" }
+    };
+
+    List<Country> countries = new List<Country>()
+{
+        new Country() { Id = 1, Name = "USA" },
+        new Country() { Id = 2, Name = "Germany" }
+    };
+    public class Test
+    {
+        public int id { get; set; }
+        public int ithamso1 { get; set; }
+        public int ithamso2 { get; set; }
+        public string sthamso1 { get; set; }
+        public string sthamso2 { get; set; }
+        public string sthamso3 { get; set; }
+        public string sthamso4 { get; set; }
+        public string sthamso5 { get; set; }
+        public string sthamso6 { get; set; }
+        public float fthamso2 { get; set; }
+        public DateTime dtthamso1 { get; set; }
+        public string img { get; set; }
+    }
+    public List<Test> testss = new List<Test>()
+{
+        new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Từ : 01/11/2008 Đến : 01/02/2009" ,sthamso2="Tổ Động vật - Khoa Sinh học - TRƯỜNG ĐẠI HỌC SƯ PHẠM" ,sthamso3="Giảng viên hợp đồng tạo nguồn Khoa Sinh, Trường Đại học Sư phạm Huế" ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/0.jpg"},
+          new Test() { id = 2, ithamso1 = 12,ithamso2=232 ,sthamso1="Từ : 01/03/2009 Đến : 01/02/2010" ,sthamso2="Tổ Động vật - Khoa Sinh học - TRƯỜNG ĐẠI HỌC SƯ PHẠM" ,sthamso3="Giảng viên hợp đồng tạo nguồn Khoa Sinh, Trường Đại học Sư phạm Huế" ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
+              new Test() { id = 3, ithamso1 = 12,ithamso2=232 ,sthamso1="Từ : 01/03/2009 Đến : 01/02/2010" ,sthamso2="Tổ Động vật - Khoa Sinh học - TRƯỜNG ĐẠI HỌC SƯ PHẠM" ,sthamso3="Giảng viên hợp đồng tạo nguồn Khoa Sinh, Trường Đại học Sư phạm Huế" ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"}
+          };
+    public List<Test> testsss = new List<Test>()
+{
+         new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Thạc sĩ" ,sthamso2="Trường Đại học Sư phạm- Đại học Huế" ,sthamso3="	Sư phạm Sinh học" ,
+             sthamso4="2011" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
+            new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="Thạc sĩ" ,sthamso2="Trường Đại học Sư phạm- TPHCM" ,sthamso3="	Sư phạm Toán" ,
+             sthamso4="2018" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"}
+    };
+
+    public List<Test> tests = new List<Test>()
+{
+         new Test() { id = 1, ithamso1 = 12,ithamso2=232 ,sthamso1="dfwa" ,sthamso2="Nguyễn Văn A" ,sthamso3="You are our laptop ." ,
+             sthamso4="THIS IS THE PAGE" ,sthamso5="trang chiếu" ,sthamso6="aaaa",fthamso2= 55,dtthamso1=DateTime.Parse("10/10/2022"), img= "images/avt.png"},
+
+        new Test() { id = 2, ithamso1 =23 ,ithamso2=124 ,sthamso1="wEFWE" ,sthamso2="Nguyễn Văn b" ,sthamso3="unlimited battary." ,
+             sthamso4="The Best Android Emulator " ,sthamso5="phim 3d" ,sthamso6="bbb",fthamso2=4564 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/a1.jpg"},
+
+        new Test() { id = 3, ithamso1 =34 ,ithamso2=34 ,sthamso1="WEFERAG" ,sthamso2="Nguyễn Văn c" ,sthamso3="reeted battary." ,
+             sthamso4="videos about how to use this powerful" ,sthamso5="phim hoạt hình" ,sthamso6="",fthamso2=45756 ,dtthamso1= DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+         new Test() { id = 4, ithamso1 =45 ,ithamso2=234 ,sthamso1="ERG.KL" ,sthamso2="Nguyễn Văn d" ,sthamso3="You are battary." ,
+             sthamso4="be able to play all your Android apps " ,sthamso5="phim viễn tưởng" ,sthamso6="ccc",fthamso2= 09453,dtthamso1=DateTime.Parse("10/10/2022") ,img="images/map.png"},
+
+        new Test() { id = 5, ithamso1 = 56,ithamso2=65 ,sthamso1="AERGERG" ,sthamso2="Nguyễn Văn e" ,sthamso3="are finascreen." ,
+             sthamso4=" PC with larger screen and unlimited" ,sthamso5="phim kinh dị" ,sthamso6="fff",fthamso2=3453 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+
+        new Test() { id = 6, ithamso1 =67 ,ithamso2= 089,sthamso1="C;VHTUI," ,sthamso2="Nguyễn Văn f" ,sthamso3="Yable to plattary." ,
+             sthamso4="On this page, you can watch the most popular " ,sthamso5="phim thiếu nhi" ,sthamso6="hhhhh",fthamso2=453 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/logosp.png"},
+
+        new Test() { id = 7, ithamso1 =78 ,ithamso2=215 ,sthamso1="RUMHFTRU" ,sthamso2="Nguyễn Văn g" ,sthamso3="You arbattary." ,
+             sthamso4="Millions of Games For You to Enjoy" ,sthamso5="phim doraemon" ,sthamso6="jkkkkkk",fthamso2=5678578 ,dtthamso1=DateTime.Parse("10/10/2022"),img= "images/user.png"},
+
+        new Test() { id = 8, ithamso1 =89 ,ithamso2= 562,sthamso1="TYJTEYJ" ,sthamso2="Nguyễn Văn h" ,sthamso3=" Android aped battary." ,
+             sthamso4="Popular Mobile Games on PC" ,sthamso5="phim tiểu thuyết" ,sthamso6="dddf",fthamso2=7678 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+
+        new Test() { id = 9, ithamso1 =90 ,ithamso2=124 ,sthamso1="TYJTEFJ6" ,sthamso2="Nguyễn Văn i" ,sthamso3="inally be able toed battary." ,
+             sthamso4="Featured Games" ,sthamso5="phim trinh thám" ,sthamso6="kklll",fthamso2=2342 ,dtthamso1= DateTime.Parse("10/10/2022"),img= "images/avt.png"},
+
+        new Test() { id = 10, ithamso1 =100 ,ithamso2=264 ,sthamso1="TYJDFCTJE" ,sthamso2="Nguyễn Văn j" ,sthamso3="Youndroid app unlry." ,
+             sthamso4="okokokokoko" ,sthamso5="thế giới khoa học" ,sthamso6="xxxx",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/avt.png"},
+          new Test() { id = 11, ithamso1 =100 ,ithamso2=264 ,sthamso1="fwegr" ,sthamso2="Nguyễn Văn ưe" ,sthamso3="ffe app unlry." ,
+             sthamso4="okokokokoko" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2022") ,img= "images/map.png"},
+          new Test() { id = 12, ithamso1 =343 ,ithamso2=54645 ,sthamso1="Tham số 1" ,sthamso2="Nguyễn Văn 43rg" ,sthamso3="aaaaaaaaaaaaaaaaaaaaaaaaaaa." ,
+             sthamso4="aaaaaaaaaaaaaaaaaaaaaaaaaa" ,sthamso5="thế gưefwefehọc" ,sthamso6="ẻgwef",fthamso2=3633 ,dtthamso1=DateTime.Parse("10/10/2033") ,img= "images/avt.png"}
+    };
+    public Test t = new Test()
+    {
+        id = 1,
+        ithamso1 = 12,
+        ithamso2 = 232,
+        sthamso1 = "dfwa",
+        sthamso2 = "Nguyễn Văn A",
+        sthamso3 = "You are our laptop .",
+        sthamso4 = "THIS IS THE PAGE",
+        sthamso5 = "trang chiếu",
+        sthamso6 = "aaaa",
+        fthamso2 = 55,
+        dtthamso1 = DateTime.Parse("10/10/2022"),
+        img = "images/avt.png"
+    };
+
+}

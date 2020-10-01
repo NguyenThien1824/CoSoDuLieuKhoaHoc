@@ -10,7 +10,7 @@ namespace CoSoDuLieuKhoaHoc.Data
         public List<test> datatesst = new List<test>()
       {
         new test() { str1 = "Nguyễn Văn A",str2 = "Nguyễn Văn B",str3 = "Nguyễn Văn C",str4 = "Nguyễn Văn D",date1=DateTime.Today, date2=DateTime.Now,so1 = 237,so2 = 5645,so3 = 568,so4 = 346,so5=3468 },
-        new test() { str1 = "John",str2 = "Test string 1",str3 = "Nguyễn",str4 = "Nhà khoa học",date1=DateTime.Today, date2=DateTime.Now,so1 = 237,so2 = 5645,so3 = 568,so4 = 346,so5=3468 },
+        new test() { str1 = "Nam",str2 = "Test string 1",str3 = "Nguyễn",str4 = "Nhà khoa học",date1=DateTime.Today, date2=DateTime.Now,so1 = 237,so2 = 5645,so3 = 568,so4 = 346,so5=3468 },
         new test() { str1 = "Nghiên cứu định hướng",str2 = "Hỗ trợ công tác thiết kế",str3 = "Phân đoạn, nguồn vôn đầu tư",str4 = "Hỗ trợ vòng 2",date1=DateTime.Today, date2=DateTime.Now,so1 = 237,so2 = 5645,so3 = 568,so4 = 346,so5=3468 },
         new test() { str1 = "Phổ thông ",str2 = "TOÁN HỌC VÀ THỐNG KÊ",str3 = "Nguyễn Văn C",str4 = "Nguyễn Văn D",date1=DateTime.Today, date2=DateTime.Now,so1 = 237,so2 = 5645,so3 = 568,so4 = 346,so5=3468 },
         new test() { str1 = "Trung Cấp ",str2 = "VẬT LÝ",str3 = "NGHỆ THUẬT",str4 = "Nguyễn Văn D",date1=DateTime.Today, date2=DateTime.Now,so1 = 237,so2 = 5645,so3 = 568,so4 = 346,so5=3468 },
