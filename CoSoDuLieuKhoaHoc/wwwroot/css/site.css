@@ -155,6 +155,7 @@ app {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
     background-color: mediumaquamarine;
    
+   
 }
 
 .sidebar .top-row {
@@ -523,4 +524,15 @@ header {
     color:red;
     margin-top:3rem;
 
+}
+.cardtapchi{
+    width:50%;
+}
+.cardttbaibao{
+    width:50%;
+}
+.listcardbb{
+    border-style:solid;
+    border-color:lightblue;
+    border-width:2px;
 }

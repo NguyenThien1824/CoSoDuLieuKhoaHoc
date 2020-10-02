@@ -1,33 +1,35 @@
-﻿@page "/DetailBaibao/{ID}"
+﻿@page "/EditBaiBao"
 @using Data
 @using DataServices
 @using Microsoft.EntityFrameworkCore
 @inject Radzen.DialogService dialogService
 @using Data;
-<h1>Thông Tin Bài Báo Khoa Học </h1>
+<h1 style="margin-left:3rem">Chỉnh Sửa Thông Tin Báo Khoa Học </h1>
 <RadzenCard>
-    <div>
+    <div class="listcardbb">
         <div> <b>Tên bài báo:	</b>@Tendetai</div> <br />
 
         <div class="d-flex justify-content-between">
-            <div>
-                <div> <b>Lĩnh vực: </b>@capdetai</div><br />
-                <div> <b>Danh mục:</b>@donvict</div><br />
-                <div> <b>Tác giả:</b>@donvith</div><br />
-                <div> <b>Liên kết:</b>@loaihinh</div><br />
+            <div class="cardttbaibao">
+                <div>  <b> Lĩnh vực:</b><RadzenTextBox Style="width:100%" Value="@capdetai" /></div>
+                <div>  <b>Danh mục: </b><RadzenTextBox Style="width:100%" Value="@donvict" /></div>
+                <div>  <b>Tác giả:</b><RadzenTextBox Style="width:100%" Value="@donvith" /></div>
+                <div>  <b>Liên kết:</b><RadzenTextBox Style="width:100%" Value="@loaihinh" /></div>
+
             </div>
             <div class="cardtapchi">
                 <RadzenCard>
-                    <div> <b>Bài báo thuộc tạp chí: </b>@Tendetai</div>
-                    <div> <b> ISSN: </b>@donvith</div>
-                    <div> <b> Tạp chí: </b>@donvict</div>
-                    <div> <b>Cơ quan xuất bản:  </b>@xeploai</div>
-                    <div> <b> Loại tạp chí: </b>@loaihinh</div>
-                    <div> <b> Cấp tạp chí: </b>@phanloaisp</div>
-                    <div> <b>Năm đăng:  </b>@nambatdau</div>
-                    <div> <b> Tập: </b>@id</div>
-                    <div> <b>Số: </b>@baibaolq</div>
-                    <div> <b>Trang </b>1243</div>
+                    <div><b>Bài báo thuộc tạp chí:</b><RadzenTextBox Style="width:100%" Value="@Tendetai" /></div>
+                    <div>   <b> ISSN:</b><RadzenTextBox Style="width:100%" Value="@donvith" /></div>
+                    <div>  <b>Tạp chí:</b><RadzenTextBox Style="width:100%" Value="@donvict" /></div>
+                    <div> <b>Cơ quan xuất bản:</b><RadzenTextBox Style="width:100%" Value="@xeploai" /></div>
+                    <div> <b>Loại tạp chí:</b><RadzenTextBox Style="width:100%" Value="@loaihinh" /></div>
+                    <div><b>Cấp tạp chí:</b><RadzenTextBox Style="width:100%" Value="@phanloaisp" /></div>
+                    <div> <b>Năm đăng:</b><RadzenTextBox Style="width:100%" Value="@nambatdau" /></div>
+                    <div> <b> Tập:</b><RadzenTextBox Style="width:100%" Value="@id.ToString()" /></div>
+                    <div>  <b> Số:</b><RadzenTextBox Style="width:100%" Value="@baibaolq" /></div>
+                    <div> <b> trang:</b><RadzenTextBox Style="width:100%" Value="1243" /></div>
+
                 </RadzenCard>
 
             </div>

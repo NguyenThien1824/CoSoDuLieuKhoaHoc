@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L28pz7C3i5u4HfyrprXJFvP5pvAY5t4to5NZmW2GWvmXRNkx4wUReNysG9LtoXmY6X/6c6tWR0CugiZGdEQvMg==",
+  "dgSpecHash": "ydT0FSxH9iHwdxPwanDxyFOiQrR/AAjc2VkXpvrAXjN/vs2FnAyBwjcXUWO9r/YivRFq4AxXyECU7OHqqOqrEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\PCNTT-20200922T112554Z-001\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+  "projectFilePath": "D:\\ctt\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\blazorstyled\\3.0.0\\blazorstyled.3.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\bootstrap\\4.5.2\\bootstrap.4.5.2.nupkg.sha512",

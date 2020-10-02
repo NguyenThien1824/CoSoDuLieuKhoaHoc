@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\PCNTT-20200922T112554Z-001\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {}
+    "D:\\ctt\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\PCNTT-20200922T112554Z-001\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {
+    "D:\\ctt\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\PCNTT-20200922T112554Z-001\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+        "projectUniqueName": "D:\\ctt\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
         "projectName": "CoSoDuLieuKhoaHoc",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\PCNTT-20200922T112554Z-001\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
+        "projectPath": "D:\\ctt\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\PCNTT-20200922T112554Z-001\\PCNTT\\CoSoDuLieuKhoaHoc\\CoSoDuLieuKhoaHoc\\obj\\",
+        "outputPath": "D:\\ctt\\CoSoDuLieuKhoaHoc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
